@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9WZXqDEJWmuVofVCUNxYpNRkhd0Z+Rp/6ltjgkTG1yG4T94NKQr/Bh/iyW2FxA7FkMDiBmVn4I6pmTXJnqHCjQ==",
+  "dgSpecHash": "fqmXPItpfAqfKLPJ7LzNN3VOUfVgUzEuRr9dtU1SiSfYoyd1RS4+1mhZVaCi8sz8q5xHRVTV9iYVdzEWKut0ew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\LosBarrios.csproj",
+  "projectFilePath": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\LosBarriosTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Izaeia\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\Izaeia\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",

@@ -5979,9 +5979,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\LosBarrios.csproj",
-      "projectName": "LosBarrios",
-      "projectPath": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\LosBarrios.csproj",
+      "projectUniqueName": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\LosBarriosTests.csproj",
+      "projectName": "LosBarriosTests",
+      "projectPath": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\LosBarriosTests.csproj",
       "packagesPath": "C:\\Users\\Izaeia\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Izaeia\\Desktop\\CIDM4390\\LosBarrios\\obj\\",
       "projectStyle": "PackageReference",
