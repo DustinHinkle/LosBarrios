@@ -74,7 +74,8 @@ List of user stores:
 
 Feature: Register
 
-    As a Los Barrios user, I want the ability to register as a member of the website so that I can access relevant information to my statutes
+    As a Los Barrios user, I want the ability to register as a member
+    of the website so that I can access relevant information to my statutes
 
   Acceptance Criteria:
 
@@ -88,9 +89,11 @@ Feature: Register
 
     Given a login page when I enter in my login information then I am taken to the main webpage
 
-    Technical work and knowledge acquisitions are product backlog items that do not carry much weight in the final product build but are useful for team members to increase efficiency.
+    Technical work and knowledge acquisitions are product backlog items that do not carry much weight in the 
+    final product build but are useful for team members to increase efficiency.
 
-    As a developer, I need to increase my knowledge in identity framework so that I can develop a registration/login for the program.
+    As a developer, I need to increase my knowledge in identity framework so that I can develop a registration/login for
+    the program.
 
  
 
