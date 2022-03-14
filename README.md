@@ -11,7 +11,7 @@ Assignment #7
 
   This guide will describe how our team incorporated scrum into our group final project. We will outline the methodology, strategy, and effectiveness of our use of scrum. This guide will discuss how we agreed upon the different goals and processes that will be used to create our project. It will also describe the difficulties and the pitfalls that we encountered while using scrum.
 
-Progression Check-List
+### Progression Check-List
 
 Determine Sprint timings
 
@@ -51,7 +51,7 @@ End of Sprint Meeting
 
   Our sprint length was essentially decided for us by the limitation of the school semester. We choose two-week sprints to accomplish our set goals. Naturally, our meetings were held at a time that all of us could attend for around two hours. These came not due to an overall decision but a time that fit all of our schedules. We would meet twice a week on Thursday and Sunday. Thursday would be a day for updates and progress and Sunday is the day that we would show our work for that sprint. The way we decided on if a sprint was completed was through a Definition-of-Done Checklist. This list holds all the tasks for a member to complete within the sprint. The items that go on this checklist should be possible and agreed upon by the group. The book explains the difference between done and done-done which is useful for understanding when you are done. “Done” is working code and “Done-Done” is code that is ready to be shipped aka final code.
 
-General Definition of Done Checklist:
+### General Definition of Done Checklist:
 
     Design Reviewed
     Code Completed
@@ -66,7 +66,7 @@ General Definition of Done Checklist:
 
     Zero Known defects 
 
-Requirements and User Stories         
+### Requirements and User Stories         
 
 Sprint 1
 
