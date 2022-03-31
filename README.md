@@ -15,11 +15,13 @@ Assignment #7
 
 Determine Sprint timings
 
-    -Determine sprint length
+    -2 week sprints
 
-    -Determine sprint meetings
+    -Determine daily sprint meetings
+    
+    -Determine sprint progress meetings
 
-    -Decide on your definition of “Done”
+    -Decide on our definition of “Done”
 
 Create PBIs
 
@@ -29,23 +31,29 @@ Create PBIs
 
 Estimate Value
 
-    -Play planning poker to assign values
+    -Play planning poker to estimate workload
 
-    -Create PBI List
+    -Create Sprint Backlog
 
 Assign PBIs        
 
     -Assign each member their task for the sprint
 
-    -Reevaluate values if needed
-
-End of Sprint Meeting
+Sprint Retrospective
 
     -Evaluate complete or incomplete PBIs
 
     -If necessary identify where we have technical debt
+    
+    -Reevaluate estimates if needed
 
     -New plans for future sprints should be incremental to what is already accomplished
+
+    -Each member will discuss what worked and did not work during that sprint
+    
+    -Members can suggest improvements for future sprints
+    
+    -Note down each complaint or insight in the Insight Backlog
 
 # Sprint Guide
 
@@ -129,6 +137,10 @@ How we will go about identifying and servicing technical debt, technical debt fi
     Evaluate if done is being used meets expectations.
 
     Evaluate how it was it is designed and where it falls short
+
+# Sprint retrospective
+
+The sprint retropective is a time for the members of a group to discuss how well the previous sprint was executed. These meetings happen at the end of the a sprint. Members will discuss what went well during the sprint and what needs to be changed. This is a time for members to be open and willing to take criticism. All of the thoughts that are brought up during the sprint retrospective should be noted down in an Insight Backlog.
 
 # Scrum Planning Principles
 
