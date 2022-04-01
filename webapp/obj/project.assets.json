@@ -9946,11 +9946,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Izaeia\\Desktop\\helpmesadface\\webapp\\webapp.csproj",
+      "projectUniqueName": "C:\\Users\\Izaeia\\Desktop\\FinalProjectFinal\\LosBarrios\\webapp\\webapp.csproj",
       "projectName": "webapp",
-      "projectPath": "C:\\Users\\Izaeia\\Desktop\\helpmesadface\\webapp\\webapp.csproj",
+      "projectPath": "C:\\Users\\Izaeia\\Desktop\\FinalProjectFinal\\LosBarrios\\webapp\\webapp.csproj",
       "packagesPath": "C:\\Users\\Izaeia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Izaeia\\Desktop\\helpmesadface\\webapp\\obj\\",
+      "outputPath": "C:\\Users\\Izaeia\\Desktop\\FinalProjectFinal\\LosBarrios\\webapp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

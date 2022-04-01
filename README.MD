@@ -29,7 +29,7 @@ Created Sendgrid sender
 
 Created key
 Command: 
-dotnet user-secrets set SendGridKey <Key>
+dotnet user-secrets set SendGridKey SEND_GRID_KEY 
 
 dotnet add package SendGrid
 
