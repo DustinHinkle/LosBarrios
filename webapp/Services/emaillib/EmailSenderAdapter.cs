@@ -1,11 +1,12 @@
 using SendGrid;
 using SendGrid.Helpers.Mail;
+// using webapp;
 
-namespace webapp;
+namespace emaillib;
 
 public class EmailSenderAdapter
 {
-
+    
     //Options.SendGridKey, subject, message, toEmail, fromEmail
     public async Task SendEmailAsync(string SendGridKey, 
                                      string subject, 
@@ -17,6 +18,7 @@ public class EmailSenderAdapter
         {
             throw new Exception("Null SendGridKey");
         }
+        
         await Execute(SendGridKey, subject, message, toEmail, fromEmail);
     }
 
@@ -41,5 +43,8 @@ public class EmailSenderAdapter
         // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
         msg.SetClickTracking(false, false);
         var response = await client.SendEmailAsync(msg);
+      
+
+        
     }
 }
