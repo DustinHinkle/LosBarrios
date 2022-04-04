@@ -23,7 +23,7 @@ Determine Sprint timings
 
     -Decide on our definition of “Done”
 
-Create PBIs
+Create Sprint PBIs
 
     -Meet with the product owner
 
@@ -33,11 +33,17 @@ Estimate Value
 
     -Play planning poker to estimate workload
 
-    -Create Sprint Backlog
+    -Create Sprint Backlog    
 
-Assign PBIs        
+Assign Sprint PBIs        
 
     -Assign each member their task for the sprint
+    
+Daily Scrum Meetings
+
+    -Will meet for 15 minutes or less
+    
+    -Record meetings
 
 Sprint Retrospective
 
