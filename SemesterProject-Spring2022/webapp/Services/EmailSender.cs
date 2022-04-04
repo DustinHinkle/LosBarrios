@@ -22,15 +22,15 @@ public class EmailSender : IEmailSender
 
     public async Task SendEmailAsync(string toEmail, string subject, string message)
     {
-        // if (string.IsNullOrEmpty(Options.SENDGRID_API_KEY))    ///commented out to make room for one line below to remove exception
-        if (string.IsNullOrEmpty(Options.SendGridKey))
+        if (string.IsNullOrEmpty(Options.SENDGRID_API_KEY))    ///commented out to make room for one line below to remove exception
+        //if (string.IsNullOrEmpty(Options.SendGridKey))
         {
             throw new Exception("Null SendGridKey");
         }
         _logger.LogInformation("SENDGRID_API_KEY OK");
 
-        // if (string.IsNullOrEmpty(Options.EMAIL_FROM_ADDRESS))    ///commented out to make room for one line below to remove exception
-        if (string.IsNullOrEmpty(Options.SendGridKey))
+        if (string.IsNullOrEmpty(Options.EMAIL_FROM_ADDRESS))    ///commented out to make room for one line below to remove exception
+        // if (string.IsNullOrEmpty(Options.SendGridKey))
         {
             throw new Exception("Null SendGridKey");
         }        
