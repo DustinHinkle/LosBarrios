@@ -60,6 +60,8 @@ Sprint Retrospective
     -Members can suggest improvements for future sprints
     
     -Note down each complaint or insight in the Insight Backlog
+    
+    -Record meeting
 
 # Sprint Guide
 
