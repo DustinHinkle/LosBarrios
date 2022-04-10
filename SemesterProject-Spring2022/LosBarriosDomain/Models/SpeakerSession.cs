@@ -23,9 +23,9 @@ public class SpeakerSession
     public bool CleanWall{ get; set; } = false;
     // White Board	
     [Display(Name = "White Board")]
-    public bool WhiteBoard { get; set; }
+    public bool WhiteBoard { get; set; } = false;
     // One demonstration table    
     [Display(Name ="Demonstration Table")]
-    public bool DemoTable { get; set; } 
+    public bool DemoTable { get; set; } =false;
     
 }
