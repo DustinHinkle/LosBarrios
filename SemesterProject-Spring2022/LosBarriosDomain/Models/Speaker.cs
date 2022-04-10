@@ -12,7 +12,7 @@ public class Speaker
     public string JobTitle { get; set; } = string.Empty;
     public Employer Employer {get; set; } = null;
     // Mailing address: Click here to enter text   
-    
+    public string Address {get; set; } = string.Empty;
     // Business & cell phone #’s: Click here to enter text	
     public string CellPhone { get; set; } = string.Empty;
     public string BusinessPhone { get; set; } = string.Empty;
