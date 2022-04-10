@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿#nullable disable
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.DependencyInjection;
+using LosBarriosDomain.Models;
 namespace webapp.Data;
 
 public class ApplicationDbContext : IdentityDbContext
@@ -9,4 +11,9 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+    public DbSet<Speaker> Speakers {get; set;} 
+    public DbSet<Employer> Employers {get; set;}
+    public DbSet<SpeakerSession> SpeakerSessions {get;set;}
+
 }

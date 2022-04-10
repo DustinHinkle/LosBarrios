@@ -1,23 +1,27 @@
+
+namespace LosBarriosDomain.Models;
+
 public interface ISpeakerHelper
 {
-    public string GetFirstName(string fname);
-    public string GetLastName(string lname);
-    public string GetEmailAddrress(string email);
+    public string GetFirstName(string FirstName);
+    public string GetLastName(string LastName);
+    public string GetEmailAddrress(string Email);
 }
 
 public class MySpeakerHelper : ISpeakerHelper
 {
-    public string GetFirstName(string fname)
+    public string GetFirstName(string FirstName)
     {
         // TODO: validation steps
-        return fname;
+        return FirstName;
     }
-    public string GetLastName(string lname)
+    public string GetLastName(string LastName)
     {
         return string.Empty;
     }
-    public string GetEmailAddrress(string email)
+    public string GetEmailAddrress(string Email)
     {
-        return string.Empty;
+        return Email;
     }
 }
+

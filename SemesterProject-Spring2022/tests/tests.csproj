@@ -22,8 +22,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\services\emaillib\emaillib.csproj" />
-    <ProjectReference Include="..\services\noaalib\noaalib.csproj" />
     <ProjectReference Include="..\webapp\webapp.csproj" />
+    <ProjectReference Include="..\LosBarriosDomain\LosBarriosDomain.csproj" />
   </ItemGroup>
 
 </Project>
