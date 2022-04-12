@@ -1,0 +1,87 @@
+@page
+@model FormModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">FORMFORM</h1>
+    <p>FORM</p>
+</div>
+
+<!--Email Form Group-->
+<div class="form-group">
+    <label asp-for="Email" class="control-label"></label>
+    <input asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div>
+<!--FirstName Form Group-->
+<div class="form-group">
+    <label asp-for="FirstName" class="control-label"></label>
+    <input asp-for="FirstName" class="form-control" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+</div>
+<!--LastName Form Group-->
+<div class="form-group">
+    <label asp-for="LastName" class="control-label"></label>
+    <input asp-for="LastName" class="form-control" />
+    <span asp-validation-for="LastName" class="text-danger"></span>
+</div>
+<!--JobTitle Form Group-->
+<div class="form-group">
+    <label asp-for="JobTitle" class="control-label"></label>
+    <input asp-for="JobTitle" class="form-control" />
+    <span asp-validation-for="JobTitle" class="text-danger"></span>
+</div>
+<!--Employer Form Group-->
+<div class="form-group">
+    <label asp-for="Employer" class="control-label"></label>
+    <input asp-for="Employer" class="form-control" />
+    <span asp-validation-for="Employer" class="text-danger"></span>
+</div>
+<!--Address Form Group-->
+<div class="form-group">
+    <label asp-for="Address" class="control-label"></label>
+    <input asp-for="Address" class="form-control" />
+    <span asp-validation-for="Address" class="text-danger"></span>
+</div>
+<!--CellPhone Form Group-->
+<div class="form-group">
+    <label asp-for="CellPhone" class="control-label"></label>
+    <input asp-for="CellPhone" class="form-control" />
+    <span asp-validation-for="CellPhone" class="text-danger"></span>
+</div>
+<!--BusinessPhone Form Group-->
+<div class="form-group">
+    <label asp-for="BusinessPhone" class="control-label"></label>
+    <input asp-for="BusinessPhone" class="form-control" />
+    <span asp-validation-for="BusinessPhone" class="text-danger"></span>
+</div>
+<!--Demonstration Form Group-->
+<div class="form-group">
+    <label asp-for="Demonstration" class="control-label"></label>
+    <input asp-for="Demonstration" class="form-control" />
+    <span asp-validation-for="Demonstration" class="text-danger"></span>
+</div>
+<!--LunchCount Form Group-->
+<div class="form-group">
+    <label asp-for="LunchCount" class="control-label"></label>
+    <input asp-for="LunchCount" class="form-control" />
+    <span asp-validation-for="LunchCount" class="text-danger"></span>
+</div>
+<!--TopicTitle Form Group-->
+<div class="form-group">
+    <label asp-for="FirstName" class="control-label"></label>
+    <input asp-for="FirstName" class="form-control" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+</div>
+<!--TopicDes Form Group-->
+<div class="form-group">
+    <label asp-for="FirstName" class="control-label"></label>
+    <input asp-for="FirstName" class="form-control" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+</div>
+<!--Submit Button-->
+<div class="form-group">
+    <input type="submit" value="Submit" class="btn btn-primary" />
+</div>

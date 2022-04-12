@@ -12,7 +12,7 @@ public class ApplicationDbContext : IdentityDbContext
     {
     }
 
-    public DbSet<Speaker> Speakers {get; set;} 
+    public DbSet<Speaker> Speaker {get; set;} 
     public DbSet<Employer> Employers {get; set;}
     public DbSet<SpeakerSession> SpeakerSessions {get;set;}
 
