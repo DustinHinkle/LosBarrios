@@ -1,141 +1,164 @@
-# CIDM4390 Spring 2022
+# LosBarrios
+Matthew Pletcher
 
-This project synthesizes the design and technical aspects of your project initiative for CIDM4390.
+Dustin Hinkle
 
-## Technologies
+Joseph Gutierrez
 
--   [ASP.NET Core Razor Pages](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-6.0&tabs=visual-studio-code)
-    -   [Create a Razor Pages web app with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-6.0&tabs=visual-studio-code)
--   [ASP.NET Core Web API](https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-6.0)
-    -   [Create a web API with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
--   [ASP.NET Core Security and Identity](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-6.0)
-    -   [Create a Web app with authentication](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=netcore-cli#create-a-web-app-with-authentication)
--   [Entity Framework](https://docs.microsoft.com/en-us/ef/core/)
+Assignment #7
 
-# Required Global Dotnet Tooling - DO THESE FIRST
-1. Identity Framework Core: `dotnet tool install --global dotnet-ef`
+# Introduction
 
-# First steps
-1. Make sure you are using a 6.x version of the sdk: `dotnet --list-sdks`
-1. [Uninstall all older SDKs](https://docs.microsoft.com/en-us/dotnet/core/install/remove-runtime-sdk-versions?pivots=os-windows)
-1. Create a project directory: `mkdir SemsterProject-Spring2022`
-1. Move into that directory: `cd SemsterProject-Spring2022`
-1. Create a globaljson file: `dotnet new globaljson`
-1. Create a new gitignore file: `dotnet new gitignore`
-1. Create a solution file: `dotnet new sln`
+  This guide will describe how our team incorporated scrum into our group final project. We will outline the methodology, strategy, and effectiveness of our use of scrum. This guide will discuss how we agreed upon the different goals and processes that will be used to create our project. It will also describe the difficulties and the pitfalls that we encountered while using scrum.
 
-# Create the Razor Pages App with Idenity
+### Progression Check-List
 
-1. Create razor pages web app with Identity using SQLite: `dotnet new webapp --auth Individual -o webapp`
-    1. Migrations are not necessary when using SQLite
-1. Add razor pages web app to solution: `dotnet sln add ./webapp/webapp.csproj`
-1. Consider using [DB Browser for SQLite](https://sqlitebrowser.org/) to verify transactions.
+Determine Sprint timings
 
-## Adding Identity Services Configuraiton
+    -2 week sprints
 
-Some of these options are deemed commonly useful in [the tutorial](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=netcore-cli#configure-identity-services):
+    -Determine daily sprint meetings
+    
+    -Determine sprint progress meetings
 
-```C#
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    // Password settings.
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequiredLength = 6;
-    options.Password.RequiredUniqueChars = 1;
+    -Decide on our definition of “Done”
 
-    // Lockout settings.
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-    options.Lockout.MaxFailedAccessAttempts = 5;
-    options.Lockout.AllowedForNewUsers = true;
+Create Sprint PBIs
 
-    // User settings.
-    options.User.AllowedUserNameCharacters =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-    options.User.RequireUniqueEmail = false;
-});
+    -Meet with the product owner
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    // Cookie settings
-    options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    -Create user stories for features
 
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.SlidingExpiration = true;
-});
-```
-## Scaffold Register, Login, LogOut, and RegisterConfirmation
+Estimate Value
 
-1. Obtain and register scaffolding tools: `dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design`
-1. When using SQLite, append `--useSqLite` or `-sqlite`: `dotnet aspnet-codegenerator identity -dc webapp.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation" --useSqLite`
-    1. CRITICAL NOTE: With the default templates, the user is redirected to the `Account.RegisterConfirmation` where they can select a link to have the account confirmed. The default `Account.RegisterConfirmation` is used only for testing, automatic account verification should be disabled in a production app
+    -Play planning poker to estimate workload
 
-## Account confirmation and password recovery in ASP.NET Core
+    -Create Sprint Backlog    
 
-The following steps assume that you will use SendGrid to send authentication emails. This is from the [Configure an email provider](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/accconfirm?view=aspnetcore-6.0&tabs=netcore-cli#configure-an-email-provider) portion of Microsoft's tutorial.  Although you do need to sign up with sendgrid, [you do not have to pay](https://sendgrid.com/free/).  Further, there are many services you can tap into, for free or with free credits, when you sign up for the FREE [GitHub Student Developer Pack](https://education.github.com/pack).
+Assign Sprint PBIs        
 
-**DO NOT EVER ENTER A CREDIT CARD NUMBER, WHATSOEVER, IN ORDER TO COMPLETE ANY ASPECT OF THESE INSTRUCTIONS.**
+    -Assign each member their task for the sprint
+    
+Daily Scrum Meetings
 
-## Creating a LibraryService for Email
+    -Will meet for 15 minutes or less
+    
+    -Record meetings
 
-1. Make a new directory for an email class library:
-    1. from the same folder where the SLN file is located: 
-        1. `mkdir services`
-        1. `cd services`
-        1. `mkdir emaillib`
-        1. `cd emaillib`
-1. create a new Class Library: `dotnet new classlib`
-    1. rename `Class1.cs` to `EmailLib.cs`
-    1. inside this file, rename `Class1` to `EmailLib`
+Sprint Retrospective
 
-## SendGrip API Key Options
+    -Evaluate complete or incomplete PBIs
 
-There are two main options (further elaborated in [Safe storage of app secrets in development in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)):
+    -If necessary identify where we have technical debt
+    
+    -Reevaluate estimates if needed
 
-* *Environment Variables*: I prefer this approach [dotenv.net](https://github.com/bolorundurowb/dotenv.net) and would normally use this for my own implementation
-* *Dotnet Secret Manager*: However, below I will use this tool, which is described in this [Secrets Management Article](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows#secret-manager)
+    -New plans for future sprints should be incremental to what is already accomplished
 
-What the tutorial says:
+    -Each member will discuss what worked and did not work during that sprint
+    
+    -Members can suggest improvements for future sprints
+    
+    -Note down each complaint or insight in the Insight Backlog
+    
+    -Record meeting
 
-1. First, initialize the user-secrets tool for the webapp project: `dotnet user-secrets init`
-1. Then, to use secrets to store your SendGrid API Key: `dotnet user-secrets set SendGridKey <key>`
-1. Next, add the SendGrid package to the project: `dotnet add package SendGrid`
-1. over in webapp, add the services:
+# Sprint Guide
 
-```C#
-builder.Services.AddTransient<IEmailSender, EmailSender>();
-builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
-```
-1. The tutorial suggests that SendGrid will required that you create a Sender Persona and this is absolutely correct. [Adding a Sender at SendGrid](https://docs.sendgrid.com/ui/sending-email/senders).
+  Our sprint length was essentially decided for us by the limitation of the school semester. We choose two-week sprints to accomplish our set goals. Naturally, our meetings were held at a time that all of us could attend for around two hours. These came not due to an overall decision but a time that fit all of our schedules. We would meet twice a week on Thursday and Sunday. Thursday would be a day for updates and progress and Sunday is the day that we would show our work for that sprint. The way we decided on if a sprint was completed was through a Definition-of-Done Checklist. This list holds all the tasks for a member to complete within the sprint. The items that go on this checklist should be possible and agreed upon by the group. The book explains the difference between done and done-done which is useful for understanding when you are done. “Done” is working code and “Done-Done” is code that is ready to be shipped aka final code.
 
-# Acme Airline Scheduling Examples
+### General Definition of Done Checklist:
 
-I will be using some of the libraries necessary to demonstrate aspects of testing and architecture from this case.
+    Design Reviewed
+    Code Completed
 
-## Testing and Libraries
+        Code refactored
+        Code commented
+        Code committed and pushed to Git repository 
 
-The `services\noaalib` project contains several testable components that are demonstrated here.
+    Tested 
 
-### Notable aspects of using xUnit.
+        Unit Tested
 
-1. Most of our [xUnit tests](https://xunit.net/docs/getting-started/netcore/cmdline) will work with these types of tests:
-    1. Test methods annotated with `[Fact]`: Facts are tests which are always true. They test invariant conditions.
-    1. Test methods annotated with `[Theory]`: Theories are tests which are only true for a particular set of data.
-        1. Theories use the `[InlineData()]` annotation to specify test data
-1. Running tests uding the [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command.
-    .1 [Running Selective Tests](https://docs.microsoft.com/en-us/dotnet/core/testing/selective-unit-tests?pivots=mstest)
-1. [Sharing Resources Accross Tests](https://xunit.net/docs/shared-context) - so you don't have to recreate the same object repeatedly within the tests themselves.
-1. [The .NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer) provides a nicer GUI experience for running tests in VS Code.
+    Zero Known defects 
 
-### Notable C#/.NET Capabilities Demonstrated
-1. Q:"How can I download data from the Internet/Web?": 
-    1. A: [HttpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-6.0)
-1. Q: "How can XML data from the web?":
-    1. A: [https://docs.microsoft.com/en-us/troubleshoot/developer/visualstudio/csharp/general/read-xml-data-from-url](How to read XML data from a URL)
-1. Q: "How can I create a valid URL from variables?"
-    1. A: [Uri](https://docs.microsoft.com/en-us/dotnet/api/system.uri?view=net-6.0) and [UriBuilder](https://docs.microsoft.com/en-us/dotnet/api/system.uribuilder.query?view=net-6.0#system-uribuilder-query)
-    1. A: [QueryHelper](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.webutilities.queryhelpers?view=aspnetcore-5.0) - An [article](https://rehansaeed.com/asp-net-core-hidden-gem-queryhelpers/) demonstrating the use of QueryHelper
+### Requirements and User Stories         
+
+Sprint 1
+
+List of user stores:
+
+Feature: Register
+
+    As a Los Barrios user, I want the ability to register as a member
+    of the website so that I can access relevant information to my statutes
+
+  Acceptance Criteria:
+
+    Given a registration page when I enter in my information then I am granted access to log in as a member  
+
+  Feature: Login
+
+    As a Los Barrios member, I want the ability to log in so that I can access needed information
+
+  Acceptance Criteria:
+
+    Given a login page when I enter in my login information then I am taken to the main webpage
+
+    Technical work and knowledge acquisitions are product backlog items that do not carry much weight in the 
+    final product build but are useful for team members to increase efficiency.
+
+    As a developer, I need to increase my knowledge in identity framework so that I can develop a registration/login for
+    the program.
+
+ 
+
+Story Mapping:
+
+EPIC: Register for login access
+
+Theme: Register
+
+Story: Register for Los Barrios
+
+Story: Log into Los Barrios
+
+Story mapping is a way to confirm with the product owner that understanding of the final goal aka the big picture is the same. This allows for people with less technical understanding to grasp the workflow of the project.
+
+# Product Backlog Items
+
+  There is a hierarchy of product backlog items (PBIs) where the more important to the overall product the PBI is then the more weight it carries. In order of importance, PBIs are features, defects, technical work, and knowledge acquisition. User stories are the main type of logging and completing PBIs. A user story of a feature is akin to a user of the program wanting a change or addition to the program so that the program is either more useful or accessible to the user. Not every scenario has to be included in the first pass of creating a PBI list. As is the nature of creating something, errors and unforeseen additions will be made and added to the list. This is known as grooming your product backlog. Grooming is when the product owner and team manage the list of PBIs to understand what is most important to the product owner. For each product owner, there will be a different definition of when a PBI is ready to be moved into a sprint. A checklist is used to understand that the PBI is consistent with what the product owner needs, the details of the situation are understood and the workload can be estimated, and if there are any other factors that would prevent the PBI from being completed.
+
+# Estimating and Velocity
+
+  Once a PBI list has been completed and groomed then comes the estimation of how difficult each PBI is. The most common way of deciding the difficulty of a PBI is planning poker. Each member of the team has cards that vary in value, a PBI is brought up and the members cast their cards on how difficult the PBI is to complete during a sprint, usually the higher the value the more difficult the situation. If there is a difference in opinion then the group will discuss why they think it is difficult and then choose the appropriate value. Once a value has been chosen it does not have to remain that value. During a scrum meeting, the value can be re-estimated and increased or decreased based on commitment. We only used this method and it was adequate in estimating tasks. Velocity refers to the amount of work that is completed during a sprint. You measure velocity with the sum of all completed PBIs during the sprint. Only finished PBIs are included in this measure. Velocity is not about the value of the product that was finished but the size of what was finished. Velocity is used to calculate how much work a team can accomplish within a sprint. This will help the product owner estimate how long it will take for the final release. We used velocity to understand how much work we needed to accomplish to have a shippable product by the end of the class. Using our assigned values to each PBI we know the sum of all PBIs and the number of sprints we have. Using the sum divided by sprint count we get the number of tasks that need to be completed each sprint.
+
+  Identity Framework: 
+  Test Identity: 
+
+# Technical Debt
+
+How we will go about identifying and servicing technical debt, technical debt first needs a definition. Technical debt is either bad design, many known defects, or the inability to test code in an automated way. Through refactoring code and aiming for test driven development, we can  put ourselves on the path for less technical debt and quickly have the code that is created easily testable. As we complete tasks it is important to have a strong definition of done and evaluate if our definition of done as it is used currently meets the expectation. As issues arise we should if feasible during that sprint aim to remedy it as we find it.
+
+    Perform test-driven development as well as refactoring while creating code.
+
+    Evaluate if done is being used meets expectations.
+
+    Evaluate how it was it is designed and where it falls short
+
+# Sprint retrospective
+
+The sprint retropective is a time for the members of a group to discuss how well the previous sprint was executed. These meetings happen at the end of the a sprint. Members will discuss what went well during the sprint and what needs to be changed. This is a time for members to be open and willing to take criticism. All of the thoughts that are brought up during the sprint retrospective should be noted down in an Insight Backlog.
+
+# Scrum Planning Principles
+
+During the start of sprints, while we look back on what was done well and what works out for the team, what is needed for the next week and so on is not pre-planned. As plans or goals change it is important not to be dead set on the original plan as not to waste too much time. As we meet we should evaluate where we have gone and where to go next in regard to the overall project as we make incremental steps. Though having an overall “plan” is useful for guidance, our plan is coming in the form of what is the overall goal that we talk of during our meetings.
+
+        Having an overall goal is good. Having a plan for everything is bad.
+
+        Time management is important.
+
+        Incremental plans are important.
+
+        Plans may change.
+
