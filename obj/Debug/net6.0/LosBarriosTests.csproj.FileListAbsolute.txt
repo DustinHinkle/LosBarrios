@@ -1,5 +1,0 @@
-C:\Users\Izaeia\Desktop\CIDM4390\LosBarrios\obj\Debug\net6.0\LosBarriosTests.csproj.AssemblyReference.cache
-C:\Users\Izaeia\Desktop\CIDM4390\LosBarrios\obj\Debug\net6.0\LosBarriosTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Izaeia\Desktop\CIDM4390\LosBarrios\obj\Debug\net6.0\LosBarriosTests.AssemblyInfoInputs.cache
-C:\Users\Izaeia\Desktop\CIDM4390\LosBarrios\obj\Debug\net6.0\LosBarriosTests.AssemblyInfo.cs
-C:\Users\Izaeia\Desktop\CIDM4390\LosBarrios\obj\Debug\net6.0\LosBarriosTests.csproj.CoreCompileInputs.cache

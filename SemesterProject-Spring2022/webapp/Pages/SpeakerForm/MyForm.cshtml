@@ -1,0 +1,88 @@
+@page
+@model FormModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">FORMFORM</h1>
+    <p>FORM</p>
+</div>
+<form method="post">
+    <!--Email Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.Email" class="control-label">Email Address</label>
+        <input asp-for="Speaker.Email" class="form-control" />
+        <span asp-validation-for="Speaker.Email" class="text-danger"></span>
+    </div>
+    <!--FirstName Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.FirstName" class="control-label">First Name</label>
+        <input asp-for="Speaker.FirstName" class="form-control" />
+        <span asp-validation-for="Speaker.FirstName" class="text-danger"></span>
+    </div>
+    <!--LastName Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.LastName" class="control-label">Last Name</label>
+        <input asp-for="Speaker.LastName" class="form-control" />
+        <span asp-validation-for="Speaker.LastName" class="text-danger"></span>
+    </div>
+    <!--JobTitle Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.JobTitle" class="control-label">Job Title</label>
+        <input asp-for="Speaker.JobTitle" class="form-control" />
+        <span asp-validation-for="Speaker.JobTitle" class="text-danger"></span>
+    </div>
+    <!--Employer Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.Employer" class="control-label">Employer Name</label>
+        <input asp-for="Speaker.Employer" class="form-control" />
+        <span asp-validation-for="Speaker.Employer" class="text-danger"></span>
+    </div>
+    <!--Address Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.Address" class="control-label">Address</label>
+        <input asp-for="Speaker.Address" class="form-control" />
+        <span asp-validation-for="Speaker.Address" class="text-danger"></span>
+    </div>
+    <!--CellPhone Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.CellPhone" class="control-label">Cell Phone</label>
+        <input asp-for="Speaker.CellPhone" class="form-control" />
+        <span asp-validation-for="Speaker.CellPhone" class="text-danger"></span>
+    </div>
+    <!--BusinessPhone Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.BusinessPhone" class="control-label">Business Phone</label>
+        <input asp-for="Speaker.BusinessPhone" class="form-control" />
+        <span asp-validation-for="Speaker.BusinessPhone" class="text-danger"></span>
+    </div>
+    <!--Demonstration Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.Demonstration" class="control-label">Demonstration</label>
+        <input asp-for="Speaker.Demonstration" class="form-control" />
+        <span asp-validation-for="Speaker.Demonstration" class="text-danger"></span>
+    </div>
+    <!--LunchCount Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.LunchCount" class="control-label">How many in your party for joining us for lunch?</label>
+        <input asp-for="Speaker.LunchCount" class="form-control" />
+        <span asp-validation-for="Speaker.LunchCount" class="text-danger"></span>
+    </div>
+    <!--TopicTitle Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.TopicTitle" class="control-label">Topic Title</label>
+        <input asp-for="Speaker.TopicTitle" class="form-control" />
+        <span asp-validation-for="Speaker.TopicTitle" class="text-danger"></span>
+    </div>
+    <!--TopicDes Form Group-->
+    <div class="form-group">
+        <label asp-for="Speaker.TopicDes" class="control-label">Description</label>
+        <input asp-for="Speaker.TopicDes" class="form-control" />
+        <span asp-validation-for="Speaker.TopicDes" class="text-danger"></span>
+    </div>
+    <!--Submit Button-->
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>
