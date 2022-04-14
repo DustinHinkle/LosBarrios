@@ -1,6 +1,7 @@
 using Xunit;
 using Xunit.Abstractions;
-using LosBarriosDomain.Models;
+using LosBarriosDomain.SpeakerAggregate;
+using LosBarriosDomain.SpeakerSessionAggregate;
 
 namespace tests;
 
@@ -14,10 +15,12 @@ public class SpeakerTest
         Speaker s = new Speaker();
         
         //Act
-        s.FirstName = helper.GetFirstName("Dude");
+        s.FirstName = helper.ValidateFirstName("dude");
 
         //Assert
-        Assert.Equal(s.FirstName, "Dude");
+        Assert.NotEqual(s.FirstName, "Dude");
+        
+            
     }
     [Fact]
     public void TestEmail()
@@ -26,11 +29,12 @@ public class SpeakerTest
         
         Speaker s = new Speaker();
 
-        s.Email = helper.GetEmailAddrress("Yolo@gmail.com");
+        s.Email = helper.ValidateEmailAddrress("Yolo@gmail.com");
 
         Assert.Equal(s.Email, "Yolo@gmail.com");
 
     }
+
     [Fact]
     public void TestSession()
     {

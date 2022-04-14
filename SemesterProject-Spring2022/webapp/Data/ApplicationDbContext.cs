@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using LosBarriosDomain.Models;
+using LosBarriosDomain.SpeakerSessionAggregate;
+using LosBarriosDomain.SpeakerAggregate;
+
 namespace webapp.Data;
 
 public class ApplicationDbContext : IdentityDbContext
@@ -12,8 +14,8 @@ public class ApplicationDbContext : IdentityDbContext
     {
     }
 
-    public DbSet<Speaker> Speakers {get; set;} 
-    public DbSet<Employer> Employers {get; set;}
-    public DbSet<SpeakerSession> SpeakerSessions {get;set;}
+    public DbSet<Speaker> Speakers {get; set;}
+    public DbSet<SpeakerSession> SpeakerSessions {get; set;}
+
 
 }

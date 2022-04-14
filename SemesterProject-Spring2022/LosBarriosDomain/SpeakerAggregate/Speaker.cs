@@ -1,5 +1,6 @@
 #nullable disable
-namespace LosBarriosDomain.Models;
+namespace LosBarriosDomain.SpeakerAggregate;
+
 public class Speaker
 {    
     public int SpeakerId {get; set;} //Primary key
@@ -10,7 +11,7 @@ public class Speaker
     public string LastName {get; set; } = string.Empty;
     // Place of employment and job title:  Click here to enter text
     public string JobTitle { get; set; } = string.Empty;
-    public Employer Employer {get; set; } = null;
+    public string Employer {get; set; } = string.Empty;
     // Mailing address: Click here to enter text   
     public string Address {get; set; } = string.Empty;
     // Business & cell phone #’s: Click here to enter text	

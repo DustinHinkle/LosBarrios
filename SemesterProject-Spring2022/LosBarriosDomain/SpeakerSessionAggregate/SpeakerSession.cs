@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LosBarriosDomain.Models;
+namespace LosBarriosDomain.SpeakerSessionAggregate;
 
 public class SpeakerSession 
 {

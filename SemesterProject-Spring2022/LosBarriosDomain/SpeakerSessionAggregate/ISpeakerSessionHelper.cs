@@ -1,4 +1,4 @@
-namespace LosBarriosDomain.Models;
+namespace LosBarriosDomain.SpeakerSessionAggregate;
 
 public interface ISpeakerSessionHelper 
 {
@@ -18,6 +18,7 @@ public class MySpeakerSessionHelper : ISpeakerSessionHelper
     public bool GetPodium (bool Podium)
     {
         return Podium;
+        
     }
     
     public bool GetCleanWall (bool CleanWall)
