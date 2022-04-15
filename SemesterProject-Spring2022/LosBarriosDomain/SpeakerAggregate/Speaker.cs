@@ -1,4 +1,6 @@
 #nullable disable
+
+
 namespace LosBarriosDomain.SpeakerAggregate;
 
 public class Speaker

@@ -1,4 +1,3 @@
-
 namespace LosBarriosDomain.SpeakerAggregate;
 
 public interface ISpeakerHelper
@@ -44,7 +43,11 @@ public class MySpeakerHelper : ISpeakerHelper
     }
     public string ValidateEmailAddress(string Email)
     {
-        // if (Email != ){} ///Needs to check if email being inputed is the same as identity Email that is used to login.
+        if(Email == null)
+        {
+            throw new ArgumentException("Cannot be null");
+        }
+        // if (Email !=){} ///Needs to check if email being inputed is the same as identity Email that is used to login.
         return Email;
     }
     public string ValidateJobTitle(string JobTitle)
