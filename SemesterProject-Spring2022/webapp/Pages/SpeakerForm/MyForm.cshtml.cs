@@ -1,3 +1,4 @@
+#nullable disable
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using LosBarriosDomain.Models;
+using LosBarriosDomain.SpeakerAggregate;
 using webapp.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosBarriosDomain", "LosBarriosDomain\LosBarriosDomain.csproj", "{C134DC64-974D-491F-A7A0-D85CCFCAC518}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{30C0AF48-0AFA-4C7E-9912-2946A32BE7AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{C134DC64-974D-491F-A7A0-D85CCFCAC518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C134DC64-974D-491F-A7A0-D85CCFCAC518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C134DC64-974D-491F-A7A0-D85CCFCAC518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C0AF48-0AFA-4C7E-9912-2946A32BE7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C0AF48-0AFA-4C7E-9912-2946A32BE7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C0AF48-0AFA-4C7E-9912-2946A32BE7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C0AF48-0AFA-4C7E-9912-2946A32BE7AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{93D5AD55-EA68-4B15-B509-3D1C7D726043} = {376D1755-2FD7-4A1F-BECE-A0B240B187AC}
