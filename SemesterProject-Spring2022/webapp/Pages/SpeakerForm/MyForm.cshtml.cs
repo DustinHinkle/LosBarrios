@@ -34,7 +34,10 @@ public class FormModel : PageModel
     {
     }
     [BindProperty]
-    public Speaker Speaker {get; set;}
+    public Speaker speaker {get; set;}
+
+    // public MySpeakerHelper helper = new MySpeakerHelper();
+    // speaker.FirstName = helper.ValidateFirstName(FirstName)
 
     public async Task<IActionResult> OnPostAsync()
         {
@@ -43,7 +46,7 @@ public class FormModel : PageModel
                 return Page();
             }
 
-            _context.Speaker.Add(Speaker);
+            _context.Speaker.Add(speaker);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/Index");
