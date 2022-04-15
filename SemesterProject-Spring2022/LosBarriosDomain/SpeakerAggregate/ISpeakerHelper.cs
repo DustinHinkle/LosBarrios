@@ -7,7 +7,6 @@ public interface ISpeakerHelper
     public string ValidateLastName(string LastName);
     public string ValidateEmailAddrress(string Email);
     public string  ValidateJobTitle(string JobTitle);
-
     public string ValidateEmployer(string Employer);
     public string ValidateAddress(string Address);
     public string ValidateCellPhone(string CellPhone);
