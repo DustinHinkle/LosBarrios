@@ -5,7 +5,7 @@ public interface ISpeakerHelper
 {
     public string ValidateFirstName(string FirstName);
     public string ValidateLastName(string LastName);
-    public string ValidateEmailAddrress(string Email);
+    public string ValidateEmailAddress(string Email);
     public string  ValidateJobTitle(string JobTitle);
     public string ValidateEmployer(string Employer);
     public string ValidateAddress(string Address);
@@ -42,7 +42,7 @@ public class MySpeakerHelper : ISpeakerHelper
         }
         return LastName;
     }
-    public string ValidateEmailAddrress(string Email)
+    public string ValidateEmailAddress(string Email)
     {
         // if (Email != ){} ///Needs to check if email being inputed is the same as identity Email that is used to login.
         return Email;

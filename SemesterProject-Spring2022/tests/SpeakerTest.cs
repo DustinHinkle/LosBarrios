@@ -27,7 +27,7 @@ public class SpeakerTest
         
         Speaker s = new Speaker();
 
-        s.Email = helper.ValidateEmailAddrress("Yolo@gmail.com");
+        s.Email = helper.ValidateEmailAddress("Yolo@gmail.com");
 
         Assert.Equal(s.Email, "Yolo@gmail.com");
 

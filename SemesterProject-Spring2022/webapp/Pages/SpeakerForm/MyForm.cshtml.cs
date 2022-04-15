@@ -48,17 +48,17 @@ public class FormModel : PageModel
             while(x == true)
             {
                 speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
-                speaker.LastName = helper.ValidateFirstName(speaker.LastName);
-                speaker.Email = helper.ValidateFirstName(speaker.Email);
-                speaker.Employer = helper.ValidateFirstName(speaker.Employer);
-                speaker.Demonstration = helper.ValidateFirstName(speaker.Demonstration);
+                speaker.LastName = helper.ValidateLastName(speaker.LastName);
+                speaker.Email = helper.ValidateEmailAddress(speaker.Email);
+                speaker.Employer = helper.ValidateEmployer(speaker.Employer);
+                speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
                 speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-                speaker.TopicDes = helper.ValidateFirstName(speaker.TopicDes);
-                speaker.TopicTitle = helper.ValidateFirstName(speaker.TopicTitle);
-                speaker.BusinessPhone = helper.ValidateFirstName(speaker.BusinessPhone);
-                speaker.CellPhone = helper.ValidateFirstName(speaker.CellPhone);
-                speaker.JobTitle = helper.ValidateFirstName(speaker.JobTitle);
-                speaker.Address = helper.ValidateFirstName(speaker.Address);
+                speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
+                speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
+                speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
+                speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
+                speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
+                speaker.Address = helper.ValidateAddress(speaker.Address);
                 x = false;
             }
             
