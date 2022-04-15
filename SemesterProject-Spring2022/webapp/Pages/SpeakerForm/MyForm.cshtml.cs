@@ -36,15 +36,32 @@ public class FormModel : PageModel
     [BindProperty]
     public Speaker speaker {get; set;}
 
-    // public MySpeakerHelper helper = new MySpeakerHelper();
-    // speaker.FirstName = helper.ValidateFirstName(FirstName)
-
+    MySpeakerHelper helper = new MySpeakerHelper();
+    // speaker.FirstName = helper.ValidateJobTitle
+    public bool x = true;
     public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            while(x == true)
+            {
+                speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
+                speaker.LastName = helper.ValidateFirstName(speaker.LastName);
+                speaker.Email = helper.ValidateFirstName(speaker.Email);
+                speaker.Employer = helper.ValidateFirstName(speaker.Employer);
+                speaker.Demonstration = helper.ValidateFirstName(speaker.Demonstration);
+                speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
+                speaker.TopicDes = helper.ValidateFirstName(speaker.TopicDes);
+                speaker.TopicTitle = helper.ValidateFirstName(speaker.TopicTitle);
+                speaker.BusinessPhone = helper.ValidateFirstName(speaker.BusinessPhone);
+                speaker.CellPhone = helper.ValidateFirstName(speaker.CellPhone);
+                speaker.JobTitle = helper.ValidateFirstName(speaker.JobTitle);
+                speaker.Address = helper.ValidateFirstName(speaker.Address);
+                x = false;
+            }
+            
 
             _context.Speaker.Add(speaker);
             await _context.SaveChangesAsync();
