@@ -11,7 +11,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using LosBarriosDomain.SpeakerAggregate;
 using webapp.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Logging;
 
 
 namespace webapp.Pages;
@@ -24,6 +27,7 @@ public class FormModel : PageModel
     {
         _logger = logger;
         _context = context;
+        
     }
     // public FormModel(ApplicationDbContext context)
     //     {
@@ -35,7 +39,8 @@ public class FormModel : PageModel
     }
     [BindProperty]
     public Speaker speaker {get; set;}
-
+    
+    // speaker.Email = _context.Users.
     MySpeakerHelper helper = new MySpeakerHelper();
     // speaker.FirstName = helper.ValidateJobTitle
     public bool x = true;
@@ -59,6 +64,7 @@ public class FormModel : PageModel
                 speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
                 speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
                 speaker.Address = helper.ValidateAddress(speaker.Address);
+                // if (speaker.Email != LoginModel.input.Email)
                 x = false;
             }
             
