@@ -22,10 +22,10 @@ public class MySpeakerHelper : ISpeakerHelper
     public string ValidateFirstName(string FirstName)
     {
         // TODO: validation steps
-        if(FirstName.Length ==0){
+        if(FirstName.Length == 0){
             throw new ArgumentException("Cannot be 0 characters");
         }
-        if(FirstName ==null)
+        if(FirstName == null)
         {
             throw new ArgumentException("Cannot be null");
         }
@@ -33,10 +33,10 @@ public class MySpeakerHelper : ISpeakerHelper
     }
     public string ValidateLastName(string LastName)
     {
-        if(LastName.Length ==0){
+        if(LastName.Length == 0){
             throw new ArgumentException("Cannot be 0 characters");
         }
-        if(LastName ==null)
+        if(LastName == null)
         {
             throw new ArgumentException("Cannot be null");
         }
@@ -49,10 +49,10 @@ public class MySpeakerHelper : ISpeakerHelper
     }
     public string ValidateJobTitle(string JobTitle)
     {
-        if(JobTitle.Length ==0){
+        if(JobTitle.Length == 0){
             throw new ArgumentException("Cannot be 0 characters");
         }
-        if(JobTitle ==null)
+        if(JobTitle == null)
         {
             throw new ArgumentException("Cannot be null");
         }
@@ -60,7 +60,7 @@ public class MySpeakerHelper : ISpeakerHelper
     }
     public string ValidateEmployer(string Employer)
     {
-        if(Employer ==null)
+        if(Employer == null)
         {
             throw new ArgumentException("Cannot be null");
         }
@@ -72,7 +72,7 @@ public class MySpeakerHelper : ISpeakerHelper
 
     public string ValidateAddress(string Address)
     {
-        if(Address.Length ==0){
+        if(Address.Length == 0){
             throw new ArgumentException("Cannot be 0 characters");
         }
         if(Address == null)
