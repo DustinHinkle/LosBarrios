@@ -110,7 +110,7 @@ public class MySpeakerHelper : ISpeakerHelper
     {
         if(LunchCount < 0)
         {
-            throw new ArgumentException("Cannot be 0 characters");
+            throw new ArgumentException("Cannot be less than 0");
         }
         if(LunchCount > 10)
         {
