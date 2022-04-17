@@ -78,7 +78,6 @@ public class FormModel : PageModel
                 
             
             
-
             _context.Speaker.Add(speaker);
             await _context.SaveChangesAsync();
 

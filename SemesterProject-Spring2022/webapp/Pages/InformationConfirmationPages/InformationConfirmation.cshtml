@@ -1,0 +1,96 @@
+@page
+@model InformationConfirmationModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">LosBarrios</h1>
+    <p>Information Confirmation</p>
+</div>
+@if(Model.speaker != null){
+    <div>
+        <label>First Name</label>
+        <p>
+             @Model.speaker.FirstName
+        </p>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <p>
+             @Model.speaker.LastName
+        </p>
+    </div>
+    <div>
+        <label>Job Title</label>
+        <p>
+             @Model.speaker.JobTitle
+        </p>
+    </div>
+    <div>
+        <label>Email</label>
+        <p>
+             @Model.speaker.Email
+        </p>
+    </div>
+    <div>
+        <label>Employer</label>
+        <p>
+             @Model.speaker.Employer
+        </p>
+    </div>
+    <div>
+        <label>Address</label>
+        <p>
+             @Model.speaker.Address
+        </p>
+    </div>
+    <div>
+        <label>Cell Phone</label>
+        <p>
+             @Model.speaker.CellPhone
+        </p>
+    </div>
+    <div>
+        <label>Business Phone</label>
+        <p>
+             @Model.speaker.BusinessPhone
+        </p>
+    </div>
+    <div>
+        <label>Demonstration</label>
+        <p>
+             @Model.speaker.Demonstration
+        </p>
+    </div>
+    <div>
+        <label>Lunch Count</label>
+        <p>
+             @Model.speaker.LunchCount
+        </p>
+    </div>
+    <div>
+        <label>Topic Title</label>
+        <p>
+             @Model.speaker.TopicTitle
+        </p>
+    </div>
+    <div>
+        <label>Topic Des</label>
+        <p>
+             @Model.speaker.TopicDes
+        </p>
+    </div>
+
+    <div class="form-group">
+        <a href="/SpeakerForm/MyForm">
+        <button>Change Information</button>
+        </a>
+    </div>
+    <form method="post">
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </form>
+}
+
