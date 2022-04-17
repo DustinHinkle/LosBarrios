@@ -18,7 +18,7 @@ using Microsoft.Extensions.Logging;
 
 
 namespace webapp.Pages;
-//[Authorize]
+[Authorize] //need to login to see form page
 public class FormModel : PageModel
 {
     private readonly ILogger<FormModel> _logger;
@@ -73,10 +73,8 @@ public class FormModel : PageModel
             speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
             speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
             speaker.Address = helper.ValidateAddress(speaker.Address);
-            if (speaker.Email != userEmail)
-            {
-                throw new ArgumentException("Does not match your logged in email");
-            }
+            speaker.Email = userEmail;
+            
                 
             
             
