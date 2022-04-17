@@ -11,19 +11,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 using LosBarriosDomain.SpeakerAggregate;
 using webapp.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Logging;
 
 
 namespace webapp.Pages;
-//[Authorize]
+[Authorize] //need to login to see form page
 public class FormModel : PageModel
 {
     private readonly ILogger<FormModel> _logger;
     private readonly ApplicationDbContext _context;
-    public FormModel(ILogger<FormModel> logger, ApplicationDbContext context)
+    private readonly UserManager<IdentityUser> _userManager;
+    public FormModel(ILogger<FormModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager)
     {
         _logger = logger;
         _context = context;
+        _userManager = UserManager;
+        
     }
     // public FormModel(ApplicationDbContext context)
     //     {
@@ -35,32 +41,42 @@ public class FormModel : PageModel
     }
     [BindProperty]
     public Speaker speaker {get; set;}
+    
 
+    
+    // speaker.Email = _context.Users.
     MySpeakerHelper helper = new MySpeakerHelper();
     // speaker.FirstName = helper.ValidateJobTitle
-    public bool x = true;
     public async Task<IActionResult> OnPostAsync()
         {
+            // ApplicationUser applicationUser = await _userManager.GetUserAsync(User);
+            // string userEmail = applicationUser?.Email; // will give the user's Email
+            // var userId =  User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
+            // var userName =  User.FindFirstValue(ClaimTypes.Name) // will give the user's userName
+
+            IdentityUser applicationUser = await _userManager.GetUserAsync(User);
+            string userEmail = applicationUser?.Email; // will give the user's Email
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            while(x == true)
-            {
-                speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
-                speaker.LastName = helper.ValidateLastName(speaker.LastName);
-                speaker.Email = helper.ValidateEmailAddress(speaker.Email);
-                speaker.Employer = helper.ValidateEmployer(speaker.Employer);
-                speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
-                speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-                speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
-                speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
-                speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
-                speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
-                speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
-                speaker.Address = helper.ValidateAddress(speaker.Address);
-                x = false;
-            }
+            
+            speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
+            speaker.LastName = helper.ValidateLastName(speaker.LastName);
+            speaker.Email = helper.ValidateEmailAddress(speaker.Email);
+            speaker.Employer = helper.ValidateEmployer(speaker.Employer);
+            speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
+            speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
+            speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
+            speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
+            speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
+            speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
+            speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
+            speaker.Address = helper.ValidateAddress(speaker.Address);
+            speaker.Email = userEmail;
+            
+                
+            
             
 
             _context.Speaker.Add(speaker);
