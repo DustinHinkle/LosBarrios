@@ -1,5 +1,6 @@
 @page
 @model FormModel
+
 @{
     ViewData["Title"] = "Home page";
 }
@@ -10,11 +11,7 @@
 </div>
 <form method="post">
     <!--Email Form Group-->
-    <div class="form-group">
-        <label asp-for="speaker.Email" class="control-label">Email Address. Must match login email.</label>
-        <input asp-for="speaker.Email" class="form-control" />
-        <span asp-validation-for="speaker.Email" class="text-danger"></span>
-    </div>
+    <!--Deleted Email Div form -->
     <!--FirstName Form Group-->
     <div class="form-group">
         <label asp-for="speaker.FirstName" class="control-label">First Name. Required.</label>
