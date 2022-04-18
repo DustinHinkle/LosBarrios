@@ -36,7 +36,6 @@ public class InformationConfirmationModel : PageModel
 
     [BindProperty]
     public Speaker speaker {get; set;}
-    MySpeakerHelper helper = new MySpeakerHelper();
     public static string Verify;
     public async Task OnGetAsync()
     {
