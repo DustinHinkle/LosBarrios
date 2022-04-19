@@ -55,31 +55,34 @@ public class FormUpdateModel : PageModel
 
             IdentityUser applicationUser = await _userManager.GetUserAsync(User);
             string userEmail = applicationUser?.Email; // will give the user's Email
-            Verify = userEmail;
-            a = SelectUserId();
-            a = speaker;
+            Verify = userEmail; //makes userEmail accessable   
+            a = SelectUserId(); //sets speaker a equal to the signed in user
             
-            speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
-            speaker.LastName = helper.ValidateLastName(speaker.LastName);
-            speaker.Email = helper.ValidateEmailAddress(speaker.Email);
-            speaker.Employer = helper.ValidateEmployer(speaker.Employer);
-            speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
-            speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-            speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
-            speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
-            speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
-            speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
-            speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
-            speaker.Address = helper.ValidateAddress(speaker.Address);
-            speaker.Email = userEmail;
+            //Sends new information to vaidation
+            a.FirstName = helper.ValidateFirstName(speaker.FirstName);
+            a.LastName = helper.ValidateLastName(speaker.LastName);
+            a.Email = helper.ValidateEmailAddress(speaker.Email);
+            a.Employer = helper.ValidateEmployer(speaker.Employer);
+            a.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
+            a.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
+            a.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
+            a.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
+            a.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
+            a.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
+            a.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
+            a.Address = helper.ValidateAddress(speaker.Address);
+            a.Email = userEmail;
             
+            //saves the update in the database
             _context.Speaker.UpdateRange(a);
             await _context.SaveChangesAsync();
+            //resets verify
             Verify = null;
             return RedirectToPage("/Index");
         }
     public Speaker SelectUserId()
     {
+            //gets the signed in user and returns it as result
             IEnumerable<Speaker> listSpeaker = _context.Speaker.ToList();
             var result = listSpeaker.Where(s => s.Email.Equals(Verify)).FirstOrDefault();
             return(result);

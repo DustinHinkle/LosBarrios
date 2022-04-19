@@ -39,10 +39,11 @@ public class InformationConfirmationModel : PageModel
     public static string Verify;
     public async Task OnGetAsync()
     {
+        //gets the signed in user's email
     IdentityUser applicationUser = await _userManager.GetUserAsync(User);
-    string userEmail = applicationUser?.Email; // will give the user's Email
-    Verify = userEmail;
-    speaker = CheckEmailInformation();
+        string userEmail = applicationUser?.Email; // will give the user's Email
+        Verify = userEmail;
+        speaker = CheckEmailInformation();
     }
     public async Task<IActionResult> OnPostAsync()
     {
@@ -52,8 +53,8 @@ public class InformationConfirmationModel : PageModel
     }
     public Speaker CheckEmailInformation()
     {
-            IEnumerable<Speaker> listSpeaker = _context.Speaker.ToList();
-            var result = listSpeaker.Where(s => s.Email.Equals(Verify)).FirstOrDefault();
-            return(result);
+        IEnumerable<Speaker> listSpeaker = _context.Speaker.ToList();
+        var result = listSpeaker.Where(s => s.Email.Equals(Verify)).FirstOrDefault();
+        return(result);
     }
 }
