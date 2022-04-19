@@ -42,6 +42,7 @@ public class FormUpdateModel : PageModel
     [BindProperty]
     public Speaker speaker {get; set;}
     // speaker.Email = _context.Users.
+    public Speaker a {get; set;}
     MySpeakerHelper helper = new MySpeakerHelper();
     // speaker.FirstName = helper.ValidateJobTitle
     public string Verify;
@@ -55,8 +56,8 @@ public class FormUpdateModel : PageModel
             IdentityUser applicationUser = await _userManager.GetUserAsync(User);
             string userEmail = applicationUser?.Email; // will give the user's Email
             Verify = userEmail;
-            speaker = SelectUserId();
-            Console.WriteLine(speaker.FirstName);
+            a = SelectUserId();
+            speaker = a;
 
             if (!ModelState.IsValid)
             {
@@ -77,7 +78,7 @@ public class FormUpdateModel : PageModel
             speaker.Address = helper.ValidateAddress(speaker.Address);
             speaker.Email = userEmail;
             
-            _context.Speaker.Update(speaker);
+            _context.Speaker.UpdateRange(speaker);
             await _context.SaveChangesAsync();
             Verify = null;
             return RedirectToPage("/Index");
