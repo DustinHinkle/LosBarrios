@@ -57,12 +57,7 @@ public class FormUpdateModel : PageModel
             string userEmail = applicationUser?.Email; // will give the user's Email
             Verify = userEmail;
             a = SelectUserId();
-            speaker = a;
-
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            a = speaker;
             
             speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
             speaker.LastName = helper.ValidateLastName(speaker.LastName);
@@ -78,7 +73,7 @@ public class FormUpdateModel : PageModel
             speaker.Address = helper.ValidateAddress(speaker.Address);
             speaker.Email = userEmail;
             
-            _context.Speaker.UpdateRange(speaker);
+            _context.Speaker.UpdateRange(a);
             await _context.SaveChangesAsync();
             Verify = null;
             return RedirectToPage("/Index");
