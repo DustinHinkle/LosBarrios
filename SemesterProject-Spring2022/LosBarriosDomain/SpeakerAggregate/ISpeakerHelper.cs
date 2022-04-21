@@ -17,6 +17,10 @@ public interface ISpeakerHelper
     public string ValidateDemonstration(string Demonstration);
     public string ValidateTopicTitle(string TopicTitle);
     public string ValidateTopicDes(string TopicDes);
+
+    // public Speaker CreateSpeaker (string FirstName, string LastName, string Email, string JobTitle, string Employer,
+    //                                 string Address, string CellPhone, string BusinessPhone, int LunchCount, 
+    //                                 string Demonstration, string TopicTitle, string TopicDes);
 }
 	
 public class MySpeakerHelper : ISpeakerHelper
@@ -150,5 +154,27 @@ public class MySpeakerHelper : ISpeakerHelper
         }
         return TopicDes;
     }
+    // public Speaker CreateSpeaker(string FirstName, string LastName, string Email, string JobTitle, string Employer,
+    //                                 string Address, string CellPhone, string BusinessPhone, int LunchCount, 
+    //                                 string Demonstration, string TopicTitle, string TopicDes)
+    // {
+    //     Speaker speaker = new Speaker()
+    //     {
+    //         FirstName = ValidateFirstName(FirstName),
+    //         LastName = ValidateLastName(LastName),
+    //         Email = ValidateEmailAddress(Email),
+    //         JobTitle = ValidateJobTitle(JobTitle),
+    //         Employer = ValidateEmployer(Employer),
+    //         Address = ValidateAddress(Address),
+    //         CellPhone = ValidateCellPhone(CellPhone),
+    //         BusinessPhone = ValidateBusinessPhone(BusinessPhone),
+    //         LunchCount = ValidateLunchCount(LunchCount),
+    //         Demonstration = ValidateDemonstration(Demonstration),
+    //         TopicTitle = ValidateTopicTitle(TopicTitle),
+    //         TopicDes = ValidateTopicDes(TopicDes)
+    //     };
+        
+    //     return speaker;
+    // }
 }
 

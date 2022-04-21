@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace LosBarriosDomain.SpeakerSessionAggregate;
+using LosBarriosDomain.SpeakerAggregate;
 
 public class SpeakerSession 
 {
     public string SpeakerSessionId {get; set;} //Primary key
     public int SpeakerId {get; set;} //Foreign key
+    public Speaker Speaker {get; set;} //Navigation property
     //TODO
     // Podium	
     [Display(Name = "Podium")]
