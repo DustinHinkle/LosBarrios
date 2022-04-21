@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using LosBarriosDomain.SpeakerAggregate;
 namespace LosBarriosDomain.SpeakerSessionAggregate;
 
 public class SpeakerSession 
@@ -13,19 +13,25 @@ public class SpeakerSession
     public int SpeakerId {get; set;} //Foreign key
     //TODO
     // Podium	
-    [Display(Name = "Podium")]
+    public Speaker SessionSpeaker {get; set;}
+
+    public string SessionCategory {get; set;} = string.Empty;
+
+    public bool SessionOne { get; set; } = false;
+
+    public bool SessionTwo { get; set; } = false;
+
+    public DateOnly SignupDate {get; set;}
+
+    // Podium
     public bool Podium { get; set; } = false;
     // Electrical outlet	
-    [Display(Name = "Electrical Outlet")]
     public bool Outlet { get; set; } = false;
     // Clean wall for projection	
-    [Display(Name = "Clean Wall")]
     public bool CleanWall{ get; set; } = false;
     // White Board	
-    [Display(Name = "White Board")]
     public bool WhiteBoard { get; set; } = false;
     // One demonstration table    
-    [Display(Name ="Demonstration Table")]
     public bool DemoTable { get; set; } =false;
     
 }
