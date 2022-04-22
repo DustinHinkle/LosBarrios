@@ -1,8 +1,8 @@
 #nullable disable
-using LosBarriosDomain;
 using LosBarriosDomain.SpeakerAggregate;
 using LosBarriosDomain.SpeakerSessionAggregate;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Repository;
 

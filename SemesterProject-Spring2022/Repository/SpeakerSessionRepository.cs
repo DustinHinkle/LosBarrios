@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using LosBarriosDomain.SpeakerSessionAggregate;
-using Microsoft.EntityFrameworkCore;
-
 
 namespace Repository;
 

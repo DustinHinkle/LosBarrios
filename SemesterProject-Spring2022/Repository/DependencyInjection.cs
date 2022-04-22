@@ -1,9 +1,8 @@
 using LosBarriosDomain;
 using LosBarriosDomain.SpeakerAggregate;
 using LosBarriosDomain.SpeakerSessionAggregate;
-using Repository;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 
 
@@ -15,6 +14,9 @@ public static class DependencyInjection
         {
             services.AddTransient<ISpeakerRepository, SpeakerRepository>();
             services.AddTransient<ISpeakerSessionRepository, SpeakerSessionRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddDbContext<webappDbContext>(options => options.UseInMemoryDatabase(databaseName: "Speaker"));
+            
 
             return services;
         }
