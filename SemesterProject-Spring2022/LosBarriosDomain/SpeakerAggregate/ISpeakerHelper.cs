@@ -1,5 +1,6 @@
 using Microsoft.AspNet.Identity;
-
+using System.Net.Http;
+using System.Xml;
 
 namespace LosBarriosDomain.SpeakerAggregate;
 

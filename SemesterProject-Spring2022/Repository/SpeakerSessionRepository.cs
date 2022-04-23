@@ -8,4 +8,9 @@ public class SpeakerSessionRepository : GenericRepository<SpeakerSession>, ISpea
     {
         
     }
+
+    public IEnumerable<SpeakerSession> GetSpeakerSessions(int id)
+    {
+        return _context.SpeakerSessions.Where(x => x.SpeakerSessionId == id);
+    }
 }

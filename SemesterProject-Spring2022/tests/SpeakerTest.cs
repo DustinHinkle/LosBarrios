@@ -1,7 +1,10 @@
+#nullable disable
 using Xunit;
 using Xunit.Abstractions;
 using LosBarriosDomain.SpeakerAggregate;
 using LosBarriosDomain.SpeakerSessionAggregate;
+using System;
+
 
 namespace tests;
 
@@ -186,15 +189,42 @@ public class SpeakerTest
 
         Assert.Equal(s.DemoTable, true);
     }
+
     // [Fact]
     // public void CreateSpeaker()
     // {
     //     MySpeakerHelper helper = new MySpeakerHelper();
-        
+
     // }
-
-
-
 
 }
 
+
+
+
+// }
+
+// public  class SpeakerHelperFixture : IDisposable
+// {
+//     public SpeakerHelperFixture()
+//     {
+//     }
+
+//     public SpeakerHelper Helper { get; set; } = new MySpeakerHelper();
+
+
+//     public void Dispose(){}
+// }
+// public class UnitTestSpeaker : IClassFixture<MySpeakerHelper>
+// {
+//     private readonly SpeakerHelperFixture fixture;
+//     private readonly ITestOutputHelper output;
+
+//     public UnitTestSpeaker(ITestOutputHelper output, SpeakerHelperFixture fixture)
+//     {
+//         this.output;
+//         this.fixture;
+//     }
+
+
+// }
