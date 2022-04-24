@@ -39,7 +39,7 @@ public class SpeakerTest
 
         SpeakerSession s = new SpeakerSession();
 
-        s.Podium = helper.GetPodium(true);
+        s.Podium = helper.ValidatePodium(true);
         
         Assert.NotEqual(s.Podium, false);
     }
@@ -50,7 +50,7 @@ public class SpeakerTest
 
         SpeakerSession s = new SpeakerSession();
 
-        s.Podium = helper.GetPodium(true);
+        s.Podium = helper.ValidatePodium(true);
 
         Assert.Equal(s.Podium, true);
     }

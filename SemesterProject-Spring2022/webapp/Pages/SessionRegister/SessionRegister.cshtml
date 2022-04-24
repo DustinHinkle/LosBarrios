@@ -15,6 +15,27 @@
         <input asp-for="speaker.FirstName" class="form-control" />
         <span asp-validation-for="speaker.FirstName" class="text-danger"></span> *@
     </div>
+    
+
+    <fieldset>
+    <label for="session.SessionCategory">Choose the category closest related to your demonstration:</label>
+    <select id="session.SessionCategory" name="session.SessionCategory">
+        <option value="Agriculture & Natural Sciences">Agriculture & Natural Sciences</option>
+        <option value="Allied Health">Allied Health</option>
+        <option value="Business">Business</option>
+        <option value="Career & Technical Education">Career & Technical Education</option>
+        <option value="Computer Info Systems">Computer Info Systems</option>
+        <option value="Counseling & Social Services">Counseling & Social Services</option>
+        <option value="Criminal Justice">Criminal Justice</option>
+        <option value="Culinary Arts">Culinary Arts</option>
+        <option value="Education">Education</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Lawyer & Paralegal">Lawyer & Paralegal</option>
+        <option value="Media Communications & Graphic Design">Media Communications & Graphic Design</option>
+        <option value="Nursing Programs">Nursing Programs</option>
+    </select>
+    </fieldset>
+    
     <fieldset>
     <legend>Choose one or both sessions:</legend>
 
@@ -29,7 +50,26 @@
     <!--Replace with Session 1 or 2 or both Check Boxes-->
 
     <!--Replace with AV Needs Check Boxes-->
+    <fieldset>
+    <legend>Select what you need for your demonstration:</legend>
 
+    <div>
+      <input type="checkbox" id="session.Podium" name="Podium">
+      <label for="session.Podium">Podium</label>
+
+      <input type="checkbox" id="session.Outlet" name="Session Outlet">
+      <label for="session.Outlet">Electrical Outlet</label>
+
+      <input type="checkbox" id="session.CleanWall" name="CleanWall">
+      <label for="session.CleanWall">CleanWall for projection</label>
+
+      <input type="checkbox" id="session.WhiteBoard" name="WhiteBoard">
+      <label for="session.WhiteBoard">WhiteBoard</label>
+
+      <input type="checkbox" id="session.DemoTable" name="DemoTable">
+      <label for="session.DemoTable">Demonstration Table</label>
+    </div>
+    </fieldset>
 
 
 

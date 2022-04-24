@@ -40,7 +40,7 @@ public class SessionModel : PageModel
     public SpeakerSession session {get; set;}
     
 
-    MySpeakerHelper helper = new MySpeakerHelper();
+    MySpeakerSessionHelper helper = new MySpeakerSessionHelper();
     public async Task<IActionResult> OnPostAsync()
         {
 
@@ -50,19 +50,18 @@ public class SessionModel : PageModel
             {
                 return Page();
             }
+        
             
-            // speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
-            // speaker.LastName = helper.ValidateLastName(speaker.LastName);
-            // speaker.Email = helper.ValidateEmailAddress(speaker.Email);
-            // speaker.Employer = helper.ValidateEmployer(speaker.Employer);
-            // speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
-            // speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-            // speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
-            // speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
-            // speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
-            // speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
-            // speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
-            // speaker.Address = helper.ValidateAddress(speaker.Address);
+            session.Podium = helper.ValidatePodium (session.Podium);
+            session.Outlet = helper.ValidateOutlet (session.Outlet);
+            session.CleanWall = helper.ValidateCleanWall (session.CleanWall);
+            session.WhiteBoard = helper.ValidateWhiteBoard (session.WhiteBoard);
+            session.DemoTable = helper.ValidateDemoTable (session.DemoTable);
+            session.SessionSpeaker = helper.ValidateSpeaker(session.SessionSpeaker);
+            session.SessionCategory = helper.ValidateSessionCategory(session.SessionCategory);
+            session.SessionOne = helper.ValidateSessionOne(session.SessionOne);
+            session.SessionTwo = helper.ValidateSessionTwo(session.SessionTwo);
+            session.SignupDate = DateTime.Today;
             // speaker.Email = userEmail;
             
                 

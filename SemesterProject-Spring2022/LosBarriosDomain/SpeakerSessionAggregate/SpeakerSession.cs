@@ -10,7 +10,6 @@ namespace LosBarriosDomain.SpeakerSessionAggregate;
 public class SpeakerSession 
 {
     public string SpeakerSessionId {get; set;} //Primary key
-    public int SpeakerId {get; set;} //Foreign key
     //TODO
     // Podium	
     public Speaker SessionSpeaker {get; set;}
@@ -21,7 +20,7 @@ public class SpeakerSession
 
     public bool SessionTwo { get; set; } = false;
 
-    public DateOnly SignupDate {get; set;}
+    public DateTime SignupDate {get; set;}
 
     // Podium
     public bool Podium { get; set; } = false;
