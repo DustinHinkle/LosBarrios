@@ -1,0 +1,241 @@
+@page
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model InformationModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Information Form</h1>
+</div>
+
+@if(Model.a != null)
+{
+<div>
+    <h1>Is this information correct?</h1>
+</div>
+    <div>
+        <label>First Name</label>
+        <p>
+             @Model.a.FirstName
+        </p>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <p>
+             @Model.a.LastName
+        </p>
+    </div>
+    <div>
+        <label>Job Title</label>
+        <p>
+             @Model.a.JobTitle
+        </p>
+    </div>
+    <div>
+        <label>Email</label>
+        <p>
+             @Model.a.Email
+        </p>
+    </div>
+    <div>
+        <label>Employer</label>
+        <p>
+             @Model.a.Employer
+        </p>
+    </div>
+    <div>
+        <label>Address</label>
+        <p>
+             @Model.a.Address
+        </p>
+    </div>
+    <div>
+        <label>Cell Phone</label>
+        <p>
+             @Model.a.CellPhone
+        </p>
+    </div>
+    <div>
+        <label>Business Phone</label>
+        <p>
+             @Model.a.BusinessPhone
+        </p>
+    </div>
+    <div>
+        <label>Demonstration</label>
+        <p>
+             @Model.a.Demonstration
+        </p>
+    </div>
+    <div>
+        <label>Lunch Count</label>
+        <p>
+             @Model.a.LunchCount
+        </p>
+    </div>
+    <div>
+        <label>Topic Title</label>
+        <p>
+             @Model.a.TopicTitle
+        </p>
+    </div>
+    <div>
+        <label>Topic Des</label>
+        <p>
+             @Model.a.TopicDes
+        </p>
+    </div>
+            <form method="post">
+            <!--Email Form Group-->
+            <!--Deleted Email Div form -->
+            <!--FirstName Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.FirstName" class="control-label">First Name. Required.</label>
+                <input asp-for="speaker.FirstName" class="form-control" />
+                <span asp-validation-for="speaker.FirstName" class="text-danger"></span>
+            </div>
+            <!--LastName Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.LastName" class="control-label">Last Name. Required.</label>
+                <input asp-for="speaker.LastName" class="form-control" />
+                <span asp-validation-for="speaker.LastName" class="text-danger"></span>
+            </div>
+            <!--JobTitle Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.JobTitle" class="control-label">Job Title. Required.</label>
+                <input asp-for="speaker.JobTitle" class="form-control" />
+                <span asp-validation-for="speaker.JobTitle" class="text-danger"></span>
+            </div>
+            <!--Employer Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.Employer" class="control-label">Employer Name. Required.</label>
+                <input asp-for="speaker.Employer" class="form-control" />
+                <span asp-validation-for="speaker.Employer" class="text-danger"></span>
+            </div>
+            <!--Address Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.Address" class="control-label">Address. Required.</label>
+                <input asp-for="speaker.Address" class="form-control" />
+                <span asp-validation-for="speaker.Address" class="text-danger"></span>
+            </div>
+            <!--CellPhone Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.CellPhone" class="control-label">Cell Phone. Required. 10 or more characters.</label>
+                <input asp-for="speaker.CellPhone" class="form-control" />
+                <span asp-validation-for="speaker.CellPhone" class="text-danger"></span>
+            </div>
+            <!--BusinessPhone Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.BusinessPhone" class="control-label">Business Phone. Required. 10 or more characters.</label>
+                <input asp-for="speaker.BusinessPhone" class="form-control" />
+                <span asp-validation-for="speaker.BusinessPhone" class="text-danger"></span>
+            </div>
+            <!--Demonstration Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.Demonstration" class="control-label">Demonstration. Required.</label>
+                <input asp-for="speaker.Demonstration" class="form-control" />
+                <span asp-validation-for="speaker.Demonstration" class="text-danger"></span>
+            </div>
+            <!--LunchCount Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.LunchCount" class="control-label">How many in your party for joining us for lunch? Required. 0 - 10.</label>
+                <input asp-for="speaker.LunchCount" class="form-control" />
+                <span asp-validation-for="speaker.LunchCount" class="text-danger"></span>
+            </div>
+            <!--TopicTitle Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.TopicTitle" class="control-label">Topic Title. Required.</label>
+                <input asp-for="speaker.TopicTitle" class="form-control" />
+                <span asp-validation-for="speaker.TopicTitle" class="text-danger"></span>
+            </div>
+            <!--TopicDes Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.TopicDes" class="control-label">Description. Required.</label>
+                <input asp-for="speaker.TopicDes" class="form-control" />
+                <span asp-validation-for="speaker.TopicDes" class="text-danger"></span>
+            </div>
+            <!--Submit Button-->
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    }else{
+        <form method="post">
+            <!--Email Form Group-->
+            <!--Deleted Email Div form -->
+            <!--FirstName Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.FirstName" class="control-label">First Name. Required.</label>
+                <input asp-for="speaker.FirstName" class="form-control" />
+                <span asp-validation-for="speaker.FirstName" class="text-danger"></span>
+            </div>
+            <!--LastName Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.LastName" class="control-label">Last Name. Required.</label>
+                <input asp-for="speaker.LastName" class="form-control" />
+                <span asp-validation-for="speaker.LastName" class="text-danger"></span>
+            </div>
+            <!--JobTitle Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.JobTitle" class="control-label">Job Title. Required.</label>
+                <input asp-for="speaker.JobTitle" class="form-control" />
+                <span asp-validation-for="speaker.JobTitle" class="text-danger"></span>
+            </div>
+            <!--Employer Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.Employer" class="control-label">Employer Name. Required.</label>
+                <input asp-for="speaker.Employer" class="form-control" />
+                <span asp-validation-for="speaker.Employer" class="text-danger"></span>
+            </div>
+            <!--Address Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.Address" class="control-label">Address. Required.</label>
+                <input asp-for="speaker.Address" class="form-control" />
+                <span asp-validation-for="speaker.Address" class="text-danger"></span>
+            </div>
+            <!--CellPhone Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.CellPhone" class="control-label">Cell Phone. Required. 10 or more characters.</label>
+                <input asp-for="speaker.CellPhone" class="form-control" />
+                <span asp-validation-for="speaker.CellPhone" class="text-danger"></span>
+            </div>
+            <!--BusinessPhone Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.BusinessPhone" class="control-label">Business Phone. Required. 10 or more characters.</label>
+                <input asp-for="speaker.BusinessPhone" class="form-control" />
+                <span asp-validation-for="speaker.BusinessPhone" class="text-danger"></span>
+            </div>
+            <!--Demonstration Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.Demonstration" class="control-label">Demonstration. Required.</label>
+                <input asp-for="speaker.Demonstration" class="form-control" />
+                <span asp-validation-for="speaker.Demonstration" class="text-danger"></span>
+            </div>
+            <!--LunchCount Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.LunchCount" class="control-label">How many in your party for joining us for lunch? Required. 0 - 10.</label>
+                <input asp-for="speaker.LunchCount" class="form-control" />
+                <span asp-validation-for="speaker.LunchCount" class="text-danger"></span>
+            </div>
+            <!--TopicTitle Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.TopicTitle" class="control-label">Topic Title. Required.</label>
+                <input asp-for="speaker.TopicTitle" class="form-control" />
+                <span asp-validation-for="speaker.TopicTitle" class="text-danger"></span>
+            </div>
+            <!--TopicDes Form Group-->
+            <div class="form-group">
+                <label asp-for="speaker.TopicDes" class="control-label">Description. Required.</label>
+                <input asp-for="speaker.TopicDes" class="form-control" />
+                <span asp-validation-for="speaker.TopicDes" class="text-danger"></span>
+            </div>
+            <!--Submit Button-->
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+
