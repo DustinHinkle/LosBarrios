@@ -24,7 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\services\emaillib\emaillib.csproj" />
     <ProjectReference Include="..\LosBarriosDomain\LosBarriosDomain.csproj" />
-    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,6 @@ public static class DependencyInjection
             services.AddTransient<ISpeakerRepository, SpeakerRepository>();
             services.AddTransient<ISpeakerSessionRepository, SpeakerSessionRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddDbContext<webappDbContext>(options => options.UseInMemoryDatabase(databaseName: "Speaker"));
             
 
             return services;

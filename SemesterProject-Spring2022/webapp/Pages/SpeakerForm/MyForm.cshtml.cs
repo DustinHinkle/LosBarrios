@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
+using LosBarriosDomain;
+using Repository;
 
 
 namespace webapp.Pages;
@@ -23,24 +25,30 @@ public class FormModel : PageModel
 {
     private readonly ILogger<FormModel> _logger;
     private readonly ApplicationDbContext _context;
+    private IUnitOfWork _UnitOfWork;
     private readonly UserManager<IdentityUser> _userManager;
-    public FormModel(ILogger<FormModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager)
+    public FormModel(ILogger<FormModel> logger, ApplicationDbContext context, IUnitOfWork UnitOfWork, UserManager<IdentityUser> UserManager)
     {
         _logger = logger;
         _context = context;
         _userManager = UserManager;
+        _UnitOfWork = UnitOfWork;
         
     }
     // public FormModel(ApplicationDbContext context)
     //     {
     //         _context = context;
     //     }
-
-    public void OnGet()
-    {
-    }
     [BindProperty]
-    public Speaker speaker {get; set;}
+     public Speaker speaker {get; set;}
+
+     public IList<Speaker> Speaker {get; set;}
+
+    public async Task OnGetAsync()
+    {   //This implements Repository/UnitOfWork pattern
+        IEnumerable<Speaker> SS = await _UnitOfWork.Speaker.GetAll();
+        Speaker = new List<Speaker>(SS);
+    }
     
 
     

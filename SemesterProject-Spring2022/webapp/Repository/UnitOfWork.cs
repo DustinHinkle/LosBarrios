@@ -1,16 +1,17 @@
 using LosBarriosDomain;
 using LosBarriosDomain.SpeakerAggregate;
 using LosBarriosDomain.SpeakerSessionAggregate;
+using webapp.Data;
 
 namespace Repository;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly webappDbContext _context;
+    private readonly ApplicationDbContext _context;
     public ISpeakerRepository Speaker { get; }
     public ISpeakerSessionRepository SpeakerSession { get; }
 
-    public UnitOfWork(webappDbContext webappDbContext, ISpeakerRepository speakerRepository, ISpeakerSessionRepository sessionRepository) 
+    public UnitOfWork(ApplicationDbContext webappDbContext, ISpeakerRepository speakerRepository, ISpeakerSessionRepository sessionRepository) 
         {
             this._context = webappDbContext;
             this.Speaker = speakerRepository;

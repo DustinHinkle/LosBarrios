@@ -1,18 +1,19 @@
-﻿#nullable disable
+#nullable disable
 using LosBarriosDomain;
 using Microsoft.EntityFrameworkCore;
+using webapp.Data;
 
 namespace Repository;
 
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly webappDbContext _context;
+        protected readonly ApplicationDbContext _context;
 
-        protected GenericRepository(webappDbContext context)
+        protected GenericRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-        public async Task<T> Get(string id)
+        public async Task<T> Get(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }

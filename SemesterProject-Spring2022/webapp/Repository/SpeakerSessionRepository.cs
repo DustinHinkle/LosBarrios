@@ -1,10 +1,11 @@
 using LosBarriosDomain.SpeakerSessionAggregate;
+using webapp.Data;
 
 namespace Repository;
 
 public class SpeakerSessionRepository : GenericRepository<SpeakerSession>, ISpeakerSessionRepository
 {
-    public SpeakerSessionRepository(webappDbContext context) : base(context)
+    public SpeakerSessionRepository(ApplicationDbContext context) : base(context)
     {
         
     }

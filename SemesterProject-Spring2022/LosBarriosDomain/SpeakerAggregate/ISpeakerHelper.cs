@@ -22,6 +22,7 @@ public interface ISpeakerHelper
     // public Speaker CreateSpeaker (string FirstName, string LastName, string Email, string JobTitle, string Employer,
     //                                 string Address, string CellPhone, string BusinessPhone, int LunchCount, 
     //                                 string Demonstration, string TopicTitle, string TopicDes);
+    // public string CreateSpeaker (Speaker FirstName, Speaker LastName, Speaker Email);
 }
 	
 public class MySpeakerHelper : ISpeakerHelper
@@ -176,6 +177,18 @@ public class MySpeakerHelper : ISpeakerHelper
     //     };
         
     //     return speaker;
+    // }
+
+    // public string CreateSpeaker(Speaker FirstName, Speaker LastName, Speaker Email)
+    // {
+    //     if(FirstName && LastName && Email != null)
+    //     {
+    //         return CreateSpeaker;
+    //     }
+    //     else
+    //     {
+    //         throw new ArgumentException("Cannot be null");
+    //     }
     // }
 }
 
