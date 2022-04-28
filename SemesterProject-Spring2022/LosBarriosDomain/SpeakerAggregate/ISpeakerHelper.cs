@@ -53,7 +53,14 @@ public class MySpeakerHelper : ISpeakerHelper
     public string ValidateEmailAddress(string Email)
     {
         // if (Email != ){} ///Needs to check if email being inputed is the same as identity Email that is used to login.
-        return Email;
+        if(Email.Contains("@"))
+        {
+            return Email;
+        }
+        else
+        {
+            throw new ArgumentException("Not a valid email");
+        }
     }
     public string ValidateJobTitle(string JobTitle)
     {
