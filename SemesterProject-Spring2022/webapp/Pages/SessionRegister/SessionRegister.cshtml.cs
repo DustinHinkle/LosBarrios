@@ -38,6 +38,9 @@ public class SessionModel : PageModel
     }
     [BindProperty]
     public SpeakerSession session {get; set;}
+    public SpeakerSession sessionUpdate {get; set;}
+    public Speaker SessionSpeaker {get; set;}
+    public string Verify;
     
 
     MySpeakerSessionHelper helper = new MySpeakerSessionHelper();
@@ -50,27 +53,47 @@ public class SessionModel : PageModel
             {
                 return Page();
             }
-        
+            Verify = userEmail;
+
+            SessionSpeaker = SelectUserId();
             
+
             session.Podium = helper.ValidatePodium (session.Podium);
             session.Outlet = helper.ValidateOutlet (session.Outlet);
             session.CleanWall = helper.ValidateCleanWall (session.CleanWall);
             session.WhiteBoard = helper.ValidateWhiteBoard (session.WhiteBoard);
             session.DemoTable = helper.ValidateDemoTable (session.DemoTable);
-            session.SessionSpeaker = helper.ValidateSpeaker(session.SessionSpeaker);
+            session.SessionSpeaker = helper.ValidateSpeaker(SessionSpeaker);
             session.SessionCategory = helper.ValidateSessionCategory(session.SessionCategory);
             session.SessionOne = helper.ValidateSessionOne(session.SessionOne);
             session.SessionTwo = helper.ValidateSessionTwo(session.SessionTwo);
             session.SignupDate = DateTime.Today;
-            // speaker.Email = userEmail;
+            session.SpeakerFullName = ($"{SessionSpeaker.FirstName} {SessionSpeaker.LastName}");
+            session.SpeakerEmail = SessionSpeaker.Email;//unsure
             
-                
+               
             
             
             _context.SpeakerSessions.Add(session);
+
+
+            if(session.SessionSpeaker.Email == null)
+            {
+                _context.SpeakerSessions.Add(session);
+            }else
+            {
+                _context.Speaker.UpdateRange();
+            }
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/Index");
         }
+    public Speaker SelectUserId()
+    {
+            //gets the signed in user and returns it as result
+            IEnumerable<Speaker> listSpeaker = _context.Speaker.ToList();
+            var result = listSpeaker.Where(s => s.Email.Equals(Verify)).FirstOrDefault();
+            return(result);
+    }
     
 }

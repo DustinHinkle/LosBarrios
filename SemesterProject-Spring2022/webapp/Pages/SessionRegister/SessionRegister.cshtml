@@ -6,15 +6,10 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Session Signup Form</h1>
+    <h1 class="display-4">Session Signup Form for EPIC Success Middle School College & Career Conference - March 30, 2022</h1>
 </div>
 <form method="post">
     
-    <div class="form-group"><!--Replace with Category Drop Down   template for basic html labels-->
-        @* <label asp-for="speaker.FirstName" class="control-label">First Name. Required.</label>
-        <input asp-for="speaker.FirstName" class="form-control" />
-        <span asp-validation-for="speaker.FirstName" class="text-danger"></span> *@
-    </div>
     
 
     <fieldset>
@@ -35,39 +30,41 @@
         <option value="Nursing Programs">Nursing Programs</option>
     </select>
     </fieldset>
-    
+    <br>
     <fieldset>
-    <legend>Choose one or both sessions:</legend>
+    <p>Choose one or both sessions:</p>
 
     <div>
-      <input type="checkbox" id="session.SessionOne" name="Session One">
-      <label for="session.SessionOne">Session 1</label>
-
-      <input type="checkbox" id="session.SessionTwo" name="Session Two">
-      <label for="session.SessionTwo">Session 2</label>
+      
+        <label><input asp-for="session.SessionOne">Session 1: 8:50 am - 9:20 am</label>
     </div>
     </fieldset>
-    <!--Replace with Session 1 or 2 or both Check Boxes-->
 
-    <!--Replace with AV Needs Check Boxes-->
     <fieldset>
-    <legend>Select what you need for your demonstration:</legend>
+    <div>   
+      <label><input asp-for="session.SessionTwo">Session 2: 10:35 am - 11:05 am</label>
+    </div>
+    </fieldset>
+    <br>
+    <fieldset>
+    <p>Select what you need for your demonstration:</p>
 
     <div>
-      <input type="checkbox" id="session.Podium" name="Podium">
-      <label for="session.Podium">Podium</label>
+      
+      <label><input asp-for="session.Podium">Podium</label>
 
-      <input type="checkbox" id="session.Outlet" name="Session Outlet">
-      <label for="session.Outlet">Electrical Outlet</label>
+      
+      <label><input asp-for="session.Outlet">Electrical Outlet</label>
 
-      <input type="checkbox" id="session.CleanWall" name="CleanWall">
-      <label for="session.CleanWall">CleanWall for projection</label>
+      
+      <label><input asp-for="session.CleanWall">CleanWall for projection</label>
 
-      <input type="checkbox" id="session.WhiteBoard" name="WhiteBoard">
-      <label for="session.WhiteBoard">WhiteBoard</label>
+      
+      <label><input asp-for="session.WhiteBoard">WhiteBoard</label>
+      
 
-      <input type="checkbox" id="session.DemoTable" name="DemoTable">
-      <label for="session.DemoTable">Demonstration Table</label>
+      
+      <label><input asp-for="session.DemoTable">Demonstration Table</label>
     </div>
     </fieldset>
 

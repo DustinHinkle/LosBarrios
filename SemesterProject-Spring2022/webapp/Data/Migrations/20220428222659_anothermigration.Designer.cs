@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webapp.Data;
 
@@ -10,9 +11,10 @@ using webapp.Data;
 namespace webapp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220428222659_anothermigration")]
+    partial class anothermigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
@@ -66,9 +68,8 @@ namespace webapp.Data.Migrations
 
             modelBuilder.Entity("LosBarriosDomain.SpeakerSessionAggregate.SpeakerSession", b =>
                 {
-                    b.Property<int>("SpeakerSessionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("SpeakerSessionId")
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("CleanWall")
                         .HasColumnType("INTEGER");
@@ -95,9 +96,6 @@ namespace webapp.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("SignupDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SpeakerEmail")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SpeakerFullName")

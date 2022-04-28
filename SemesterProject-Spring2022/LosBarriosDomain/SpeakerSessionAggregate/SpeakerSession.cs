@@ -9,10 +9,14 @@ namespace LosBarriosDomain.SpeakerSessionAggregate;
 
 public class SpeakerSession 
 {
-    public string SpeakerSessionId {get; set;} //Primary key
+    public int SpeakerSessionId {get; set;} //Primary key
     //TODO
     // Podium	
     public Speaker SessionSpeaker {get; set;}
+
+    // DO NOT TOUCH THE ABOVE
+    public string SpeakerFullName {get; set;}  = string.Empty;
+    public string SpeakerEmail {get; set;}  = string.Empty;
 
     public string SessionCategory {get; set;} = string.Empty;
 
