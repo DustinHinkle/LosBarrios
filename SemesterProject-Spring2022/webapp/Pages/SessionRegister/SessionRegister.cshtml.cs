@@ -38,7 +38,7 @@ public class SessionModel : PageModel
     }
     [BindProperty]
     public SpeakerSession session {get; set;}
-    public SpeakerSession sessionUpdate {get; set;}
+    public SpeakerSession sessionForSpeaker {get; set;}
     public Speaker SessionSpeaker {get; set;}
     public string Verify;
     
@@ -46,7 +46,8 @@ public class SessionModel : PageModel
     MySpeakerSessionHelper helper = new MySpeakerSessionHelper();
     public async Task<IActionResult> OnPostAsync()
         {
-
+            
+            
             IdentityUser applicationUser = await _userManager.GetUserAsync(User);
             string userEmail = applicationUser?.Email; // will give the user's Email
             if (!ModelState.IsValid)
@@ -55,8 +56,10 @@ public class SessionModel : PageModel
             }
             Verify = userEmail;
 
-            SessionSpeaker = SelectUserId();
-            
+            session.SpeakerEmail = userEmail;// identity login is speaker and sessionspeaker email
+
+            SessionSpeaker = SelectUserId(); // the speaker itself
+            sessionForSpeaker = SelectSessionSpeakerId();// the Speaker's Session in the database
 
             session.Podium = helper.ValidatePodium (session.Podium);
             session.Outlet = helper.ValidateOutlet (session.Outlet);
@@ -68,24 +71,32 @@ public class SessionModel : PageModel
             session.SessionOne = helper.ValidateSessionOne(session.SessionOne);
             session.SessionTwo = helper.ValidateSessionTwo(session.SessionTwo);
             session.SignupDate = DateTime.Today;
-            session.SpeakerFullName = ($"{SessionSpeaker.FirstName} {SessionSpeaker.LastName}");
-            session.SpeakerEmail = SessionSpeaker.Email;//unsure
+            session.SpeakerFullName = ($"{SessionSpeaker.FirstName}" +$" {SessionSpeaker.LastName}");
             
-               
-            
-            
-            _context.SpeakerSessions.Add(session);
 
 
-            if(session.SessionSpeaker.Email == null)
+            if(sessionForSpeaker == null)
             {
                 _context.SpeakerSessions.Add(session);
+                await _context.SaveChangesAsync();
             }else
             {
-                _context.Speaker.UpdateRange();
-            }
-            await _context.SaveChangesAsync();
+                sessionForSpeaker.Podium = helper.ValidatePodium (session.Podium);
+                sessionForSpeaker.Outlet = helper.ValidateOutlet (session.Outlet);
+                sessionForSpeaker.CleanWall = helper.ValidateCleanWall (session.CleanWall);
+                sessionForSpeaker.WhiteBoard = helper.ValidateWhiteBoard (session.WhiteBoard);
+                sessionForSpeaker.DemoTable = helper.ValidateDemoTable (session.DemoTable);
+                sessionForSpeaker.SessionSpeaker = helper.ValidateSpeaker(SessionSpeaker);
+                sessionForSpeaker.SessionCategory = helper.ValidateSessionCategory(session.SessionCategory);
+                sessionForSpeaker.SessionOne = helper.ValidateSessionOne(session.SessionOne);
+                sessionForSpeaker.SessionTwo = helper.ValidateSessionTwo(session.SessionTwo);
+                sessionForSpeaker.SignupDate = DateTime.Today;
+                sessionForSpeaker.SpeakerFullName = ($"{SessionSpeaker.FirstName}"+ $" {SessionSpeaker.LastName}");
 
+
+                _context.SpeakerSessions.UpdateRange(sessionForSpeaker);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToPage("/Index");
         }
     public Speaker SelectUserId()
@@ -94,6 +105,15 @@ public class SessionModel : PageModel
             IEnumerable<Speaker> listSpeaker = _context.Speaker.ToList();
             var result = listSpeaker.Where(s => s.Email.Equals(Verify)).FirstOrDefault();
             return(result);
+    }
+    public SpeakerSession SelectSessionSpeakerId()
+    {
+            //gets the session where it matches the signed in user's email
+            IEnumerable<SpeakerSession> listSpeakerSession = _context.SpeakerSessions.ToList();
+            var result = listSpeakerSession.Where(a => a.SpeakerEmail == Verify).FirstOrDefault();
+
+
+            return result;
     }
     
 }
