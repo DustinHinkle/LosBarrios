@@ -51,25 +51,22 @@ public class InformationModel : PageModel
         a = SelectUserId();
     }
     public async Task<IActionResult> OnPostAsync()
+    {
+        //gets the Identity user and sets their database entry to test
+        IdentityUser applicationUser = await _userManager.GetUserAsync(User);
+        string userEmail = applicationUser?.Email; // will give the user's Email
+        var test = _context.Speaker.Where(s => s.Email == userEmail).FirstOrDefault();
+        if(test != null)
         {
-            XCheck(x); 
-            Console.WriteLine(x);
-            if(x == true)
-            {
-                Console.WriteLine("Update");
-                await UpdateSpeakerAsync();
-                return RedirectToPage("/Index");
-            }else if (x == false){
-                Console.WriteLine("New Speaker");
-                await AddNewSpeaker();
-                //resets verify
-                Verify = null;
-                return RedirectToPage("/Index");
-            }else{
-                Console.WriteLine("How");
-                return RedirectToPage("/Index");
-            }
+            Console.WriteLine("Update");
+            await UpdateSpeakerAsync();
+            return RedirectToPage("/Index");
+        }else{
+            Console.WriteLine("New Speaker");
+            await AddNewSpeaker();
+            return RedirectToPage("/Index");
         }
+    }
 
     public async Task AddNewSpeaker(){
         IdentityUser applicationUser = await _userManager.GetUserAsync(User);
@@ -116,14 +113,6 @@ public class InformationModel : PageModel
         await _context.SaveChangesAsync();
         //resets verify
         Verify = null;
-    }
-    public bool XCheck(bool q){
-        if(a != null){
-            q = true;
-        }else{
-            q = false;
-        }
-        return(q);
     }
     public Speaker SelectUserId()
     {
