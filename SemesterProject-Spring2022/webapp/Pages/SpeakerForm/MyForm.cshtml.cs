@@ -24,13 +24,11 @@ namespace webapp.Pages;
 public class FormModel : PageModel
 {
     private readonly ILogger<FormModel> _logger;
-    private readonly ApplicationDbContext _context;
     private IUnitOfWork _UnitOfWork;
     private readonly UserManager<IdentityUser> _userManager;
-    public FormModel(ILogger<FormModel> logger, ApplicationDbContext context, IUnitOfWork UnitOfWork, UserManager<IdentityUser> UserManager)
+    public FormModel(ILogger<FormModel> logger, IUnitOfWork UnitOfWork, UserManager<IdentityUser> UserManager)
     {
         _logger = logger;
-        _context = context;
         _userManager = UserManager;
         _UnitOfWork = UnitOfWork;
         
@@ -44,16 +42,17 @@ public class FormModel : PageModel
 
      public IList<Speaker> Speaker {get; set;}
 
-    public async Task OnGetAsync()
-    {   //This implements Repository/UnitOfWork pattern
-        IEnumerable<Speaker> SS = await _UnitOfWork.Speaker.GetAll();
-        Speaker = new List<Speaker>(SS);
+    // public async Task OnGetAsync()
+    // {   //This implements Repository/UnitOfWork pattern
+    //     IEnumerable<Speaker> SS = await _UnitOfWork.Speaker.GetAll();
+    //     Speaker = new List<Speaker>(SS);
+    // }
+    public void OnGet()
+    {
     }
     
-
-    
     // speaker.Email = _context.Users.
-    MySpeakerHelper helper = new MySpeakerHelper();
+    MySpeakerHelper SpeakerHelper = new MySpeakerHelper();
     // speaker.FirstName = helper.ValidateJobTitle
     public async Task<IActionResult> OnPostAsync()
         {
@@ -68,27 +67,47 @@ public class FormModel : PageModel
             {
                 return Page();
             }
-            
-            speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
-            speaker.LastName = helper.ValidateLastName(speaker.LastName);
-            speaker.Email = helper.ValidateEmailAddress(speaker.Email);
-            speaker.Employer = helper.ValidateEmployer(speaker.Employer);
-            speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
-            speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-            speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
-            speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
-            speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
-            speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
-            speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
-            speaker.Address = helper.ValidateAddress(speaker.Address);
-            speaker.Email = userEmail;
-            
-                
-            
-            
-            _context.Speaker.Add(speaker);
-            await _context.SaveChangesAsync();
 
+            speaker.FirstName = _UnitOfWork.SpeakerHelper.ValidateFirstName(speaker.FirstName);
+            speaker.LastName = _UnitOfWork.SpeakerHelper.ValidateLastName(speaker.LastName);
+            speaker.Email = _UnitOfWork.SpeakerHelper.ValidateEmailAddress(speaker.Email);
+            speaker.Employer = _UnitOfWork.SpeakerHelper.ValidateEmployer(speaker.Employer);
+            speaker.Demonstration = _UnitOfWork.SpeakerHelper.ValidateDemonstration(speaker.Demonstration);
+            speaker.LunchCount = _UnitOfWork.SpeakerHelper.ValidateLunchCount(speaker.LunchCount);
+            speaker.TopicDes = _UnitOfWork.SpeakerHelper.ValidateTopicDes(speaker.TopicDes);
+            speaker.TopicTitle = _UnitOfWork.SpeakerHelper.ValidateTopicTitle(speaker.TopicTitle);
+            speaker.BusinessPhone = _UnitOfWork.SpeakerHelper.ValidateBusinessPhone(speaker.BusinessPhone);
+            speaker.CellPhone = _UnitOfWork.SpeakerHelper.ValidateCellPhone(speaker.CellPhone);
+            speaker.JobTitle = _UnitOfWork.SpeakerHelper.ValidateJobTitle(speaker.JobTitle);
+            speaker.Address = _UnitOfWork.SpeakerHelper.ValidateAddress(speaker.Address);
+            speaker.Email = userEmail;
+
+
+            // _context.Speaker.Add(speaker);
+            // await _context.SaveChangesAsync();
+
+            await _UnitOfWork.Speaker.Add(speaker); 
+            _UnitOfWork.Complete();  
+
+            
+            // speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
+            // speaker.LastName = helper.ValidateLastName(speaker.LastName);
+            // speaker.Email = helper.ValidateEmailAddress(speaker.Email);
+            // speaker.Employer = helper.ValidateEmployer(speaker.Employer);
+            // speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
+            // speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
+            // speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
+            // speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
+            // speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
+            // speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
+            // speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
+            // speaker.Address = helper.ValidateAddress(speaker.Address);
+            // speaker.Email = userEmail;
+            // _UnitOfWork.SaveChangesAsync();
+
+            
+            
+            
             return RedirectToPage("/Index");
         }
 

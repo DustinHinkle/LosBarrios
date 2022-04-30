@@ -14,9 +14,11 @@ public static class DependencyInjection
         {
             services.AddTransient<ISpeakerRepository, SpeakerRepository>();
             services.AddTransient<ISpeakerSessionRepository, SpeakerSessionRepository>();
+            services.AddTransient<ISpeakerHelper, MySpeakerHelper>();
+            services.AddTransient<ISpeakerSessionHelper, MySpeakerSessionHelper>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             
-
+            
             return services;
         }
        

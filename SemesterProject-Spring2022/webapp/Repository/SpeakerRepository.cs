@@ -4,6 +4,10 @@ using LosBarriosDomain;
 using Microsoft.Extensions.Logging;
 using webapp.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Repository;
 
@@ -27,6 +31,10 @@ public class SpeakerRepository : GenericRepository<Speaker>, ISpeakerRepository
     {
         return await _context.Set<Speaker>().ToListAsync();
     }
+    public async Task AddSpeaker(Speaker entity)
+        {
+            await _context.Set<Speaker>().AddAsync(entity);
+        }
     public void DeleteSpeaker(Speaker entity)
     {
         _context.Set<Speaker>().Remove(entity);

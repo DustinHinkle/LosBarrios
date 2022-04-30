@@ -7,5 +7,8 @@ namespace LosBarriosDomain;
     {
         ISpeakerRepository Speaker { get; }
         ISpeakerSessionRepository SpeakerSession { get; }
+        ISpeakerHelper SpeakerHelper {get; }
+        ISpeakerSessionHelper SessionHelper {get; }
+
         int Complete();
     }
