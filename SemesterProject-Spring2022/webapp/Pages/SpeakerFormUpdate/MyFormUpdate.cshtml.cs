@@ -79,17 +79,13 @@ public class FormUpdateModel : PageModel
             a.Email = userEmail;
 
             //saves the update in the database
-            _UnitOfWork.Speaker.Update(a);
-            _UnitOfWork.Complete();  
-    //         public void UpdateSpeaker(Speaker entity)
-    // {
-    //     _context.Set<Speaker>().Update(entity);
-    // }
+            // _UnitOfWork.Speaker.Update(a);
+            // _UnitOfWork.Complete();  
 
             
             //saves the update in the database
-            // _context.Speaker.UpdateRange(a);
-            // await _context.SaveChangesAsync();
+            _context.Speaker.UpdateRange(a);
+            await _context.SaveChangesAsync();
             //resets verify
             Verify = null;
             return RedirectToPage("/Index");
