@@ -152,11 +152,10 @@ public class SpeakerTest
 
         SpeakerSession s = new SpeakerSession();
 
-<<<<<<< HEAD
+
         s.Podium = helper.ValidatePodium(true);
-=======
-        s.Outlet = helper.GetOutlet(true);
->>>>>>> 08393dc128b8d467e97f8b99e5fbc1bef524ed7a
+
+        s.Outlet = helper.ValidateOutlet(true);
 
         Assert.Equal(s.Outlet, true);
     }
@@ -167,7 +166,7 @@ public class SpeakerTest
 
         SpeakerSession s = new SpeakerSession();
 
-        s.CleanWall = helper.GetCleanWall(false);
+        s.CleanWall = helper.ValidateCleanWall(false);
 
         Assert.Equal(s.CleanWall, false);
     }
@@ -178,7 +177,7 @@ public class SpeakerTest
 
         SpeakerSession s = new SpeakerSession();
 
-        s.WhiteBoard = helper.GetWhiteBoard(false);
+        s.WhiteBoard = helper.ValidateWhiteBoard(false);
 
         Assert.Equal(s.WhiteBoard, false);
     }
@@ -189,7 +188,7 @@ public class SpeakerTest
 
         SpeakerSession s = new SpeakerSession();
 
-        s.DemoTable = helper.GetDemoTable(true);
+        s.DemoTable = helper.ValidateDemoTable(true);
 
         Assert.Equal(s.DemoTable, true);
     }
