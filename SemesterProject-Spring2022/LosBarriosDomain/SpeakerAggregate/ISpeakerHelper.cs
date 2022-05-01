@@ -1,5 +1,6 @@
 using Microsoft.AspNet.Identity;
-
+using System.Net.Http;
+using System.Xml;
 
 namespace LosBarriosDomain.SpeakerAggregate;
 
@@ -17,6 +18,11 @@ public interface ISpeakerHelper
     public string ValidateDemonstration(string Demonstration);
     public string ValidateTopicTitle(string TopicTitle);
     public string ValidateTopicDes(string TopicDes);
+
+    // public Speaker CreateSpeaker (string FirstName, string LastName, string Email, string JobTitle, string Employer,
+    //                                 string Address, string CellPhone, string BusinessPhone, int LunchCount, 
+    //                                 string Demonstration, string TopicTitle, string TopicDes);
+    // public string CreateSpeaker (Speaker FirstName, Speaker LastName, Speaker Email);
 }
 	
 public class MySpeakerHelper : ISpeakerHelper
@@ -47,7 +53,14 @@ public class MySpeakerHelper : ISpeakerHelper
     public string ValidateEmailAddress(string Email)
     {
         // if (Email != ){} ///Needs to check if email being inputed is the same as identity Email that is used to login.
-        return Email;
+        if(Email.Contains("@"))
+        {
+            return Email;
+        }
+        else
+        {
+            throw new ArgumentException("Not a valid email");
+        }
     }
     public string ValidateJobTitle(string JobTitle)
     {
@@ -150,5 +163,39 @@ public class MySpeakerHelper : ISpeakerHelper
         }
         return TopicDes;
     }
+    // public Speaker CreateSpeaker(string FirstName, string LastName, string Email, string JobTitle, string Employer,
+    //                                 string Address, string CellPhone, string BusinessPhone, int LunchCount, 
+    //                                 string Demonstration, string TopicTitle, string TopicDes)
+    // {
+    //     Speaker speaker = new Speaker()
+    //     {
+    //         FirstName = ValidateFirstName(FirstName),
+    //         LastName = ValidateLastName(LastName),
+    //         Email = ValidateEmailAddress(Email),
+    //         JobTitle = ValidateJobTitle(JobTitle),
+    //         Employer = ValidateEmployer(Employer),
+    //         Address = ValidateAddress(Address),
+    //         CellPhone = ValidateCellPhone(CellPhone),
+    //         BusinessPhone = ValidateBusinessPhone(BusinessPhone),
+    //         LunchCount = ValidateLunchCount(LunchCount),
+    //         Demonstration = ValidateDemonstration(Demonstration),
+    //         TopicTitle = ValidateTopicTitle(TopicTitle),
+    //         TopicDes = ValidateTopicDes(TopicDes)
+    //     };
+        
+    //     return speaker;
+    // }
+
+    // public string CreateSpeaker(Speaker FirstName, Speaker LastName, Speaker Email)
+    // {
+    //     if(FirstName && LastName && Email != null)
+    //     {
+    //         return CreateSpeaker;
+    //     }
+    //     else
+    //     {
+    //         throw new ArgumentException("Cannot be null");
+    //     }
+    // }
 }
 
