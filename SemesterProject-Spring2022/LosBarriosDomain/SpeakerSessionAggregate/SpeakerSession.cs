@@ -4,21 +4,17 @@ using System.Collections.Generic;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-<<<<<<< HEAD
 using LosBarriosDomain.SpeakerAggregate;
-=======
->>>>>>> 08393dc128b8d467e97f8b99e5fbc1bef524ed7a
+
 namespace LosBarriosDomain.SpeakerSessionAggregate;
 using LosBarriosDomain.SpeakerAggregate;
 
 public class SpeakerSession 
 {
     public int SpeakerSessionId {get; set;} //Primary key
-<<<<<<< HEAD
-=======
+
     public int SpeakerId {get; set;} //Foreign key
-    public List<Speaker> Speakers {get; set;} //Navigation property
->>>>>>> 08393dc128b8d467e97f8b99e5fbc1bef524ed7a
+
     //TODO
     // Podium	
     public Speaker SessionSpeaker {get; set;}
