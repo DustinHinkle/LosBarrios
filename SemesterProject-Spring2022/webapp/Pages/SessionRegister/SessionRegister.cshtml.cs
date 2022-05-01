@@ -22,10 +22,10 @@ namespace webapp.Pages;
 [Authorize] //need to login to see form page
 public class SessionModel : PageModel
 {
-    private readonly ILogger<FormModel> _logger;
+    private readonly ILogger<SessionModel> _logger;
     private readonly ApplicationDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
-    public SessionModel(ILogger<FormModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager)
+    public SessionModel(ILogger<SessionModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager)
     {
         _logger = logger;
         _context = context;
@@ -105,7 +105,7 @@ public class SessionModel : PageModel
     }
     public void OnPostUnregister()
     {
-        
+
     }
     public Speaker SelectUserId()
     {

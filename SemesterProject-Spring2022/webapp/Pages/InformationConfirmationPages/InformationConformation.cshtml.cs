@@ -40,7 +40,7 @@ public class InformationConfirmationModel : PageModel
     public async Task OnGetAsync()
     {
         //gets the signed in user's email
-    IdentityUser applicationUser = await _userManager.GetUserAsync(User);
+        IdentityUser applicationUser = await _userManager.GetUserAsync(User);
         string userEmail = applicationUser?.Email; // will give the user's Email
         Verify = userEmail;
         speaker = CheckEmailInformation();

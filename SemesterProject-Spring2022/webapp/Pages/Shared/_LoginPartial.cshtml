@@ -5,14 +5,13 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="SpeakerForm/MyForm">My Forms</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="InformationConfirmationPages/InformationConfirmation">Information Confirmation</a>
-    </li>
+    
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-page="/SessionRegister/SessionRegister">Session</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/MergedForms/MergedForms">MergedForms</a>
     </li>
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
