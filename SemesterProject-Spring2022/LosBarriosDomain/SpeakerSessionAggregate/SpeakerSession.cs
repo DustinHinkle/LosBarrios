@@ -5,16 +5,11 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using LosBarriosDomain.SpeakerAggregate;
-
 namespace LosBarriosDomain.SpeakerSessionAggregate;
-using LosBarriosDomain.SpeakerAggregate;
 
 public class SpeakerSession 
 {
     public int SpeakerSessionId {get; set;} //Primary key
-
-    public int SpeakerId {get; set;} //Foreign key
-
     //TODO
     // Podium	
     public Speaker SessionSpeaker {get; set;}
