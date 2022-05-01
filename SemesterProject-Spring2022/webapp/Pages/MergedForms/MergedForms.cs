@@ -33,7 +33,6 @@ public class InformationModel : PageModel
     MySpeakerHelper helper = new MySpeakerHelper();
     // speaker.FirstName = helper.ValidateJobTitle
     public string Verify;
-    public bool x;
 
     public InformationModel(ILogger<InformationModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager, SignInManager<IdentityUser> SignInManager)
     {
