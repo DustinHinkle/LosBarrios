@@ -17,21 +17,7 @@ namespace webapp.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
 
-            modelBuilder.Entity("LosBarriosDomain.Models.Employer", b =>
-                {
-                    b.Property<int>("EmployerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EmployerName")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("EmployerId");
-
-                    b.ToTable("Employers");
-                });
-
-            modelBuilder.Entity("LosBarriosDomain.Models.Speaker", b =>
+            modelBuilder.Entity("LosBarriosDomain.SpeakerAggregate.Speaker", b =>
                 {
                     b.Property<int>("SpeakerId")
                         .ValueGeneratedOnAdd()
@@ -67,6 +53,9 @@ namespace webapp.Data.Migrations
                     b.Property<int>("LunchCount")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("SpeakerSessionId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("TopicDes")
                         .HasColumnType("TEXT");
 
@@ -75,13 +64,16 @@ namespace webapp.Data.Migrations
 
                     b.HasKey("SpeakerId");
 
+                    b.HasIndex("SpeakerSessionId");
+
                     b.ToTable("Speaker");
                 });
 
-            modelBuilder.Entity("LosBarriosDomain.Models.SpeakerSession", b =>
+            modelBuilder.Entity("LosBarriosDomain.SpeakerSessionAggregate.SpeakerSession", b =>
                 {
-                    b.Property<string>("SpeakerSessionId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SpeakerSessionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("CleanWall")
                         .HasColumnType("INTEGER");
@@ -302,6 +294,13 @@ namespace webapp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("LosBarriosDomain.SpeakerAggregate.Speaker", b =>
+                {
+                    b.HasOne("LosBarriosDomain.SpeakerSessionAggregate.SpeakerSession", null)
+                        .WithMany("Speakers")
+                        .HasForeignKey("SpeakerSessionId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -351,6 +350,11 @@ namespace webapp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LosBarriosDomain.SpeakerSessionAggregate.SpeakerSession", b =>
+                {
+                    b.Navigation("Speakers");
                 });
 #pragma warning restore 612, 618
         }
