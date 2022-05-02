@@ -35,19 +35,27 @@ public class SessionModel : PageModel
         _context = context;
         _UnitOfWork = UnitOfWork;
         _userManager = UserManager;
-        
+
     }
     [BindProperty]
     public SpeakerSession session {get; set;}
     public SpeakerSession sessionForSpeaker {get; set;}
     public Speaker SessionSpeaker {get; set;}
     public string Verify;
+    public SpeakerSession DoesSpeakerExistInSession {get; set;}
+    public bool getpage;
 
     public async Task OnGet()
     {
         IdentityUser applicationUser =  await _userManager.GetUserAsync(User);
         string userEmail = applicationUser?.Email; // will give the user's Email
-        var test = _context.Speaker.Where(s => s.Email == userEmail).FirstOrDefault();
+        var DoesSpeakerExistInSession = _context.SpeakerSessions.Where(s => s.SpeakerEmail == userEmail).FirstOrDefault();
+        if(DoesSpeakerExistInSession == null){
+            getpage = true;
+        }else
+        {
+            getpage = false;
+        }
     }
     
     

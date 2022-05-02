@@ -1,10 +1,15 @@
 @page
+
 @model SessionModel
 
 @{
     ViewData["Title"] = "Home page";
 }
+<html>
 
+
+@if(Model.getpage == true){
+    
 <div class="text-center">
     <h1 class="display-4">Session Signup Form for EPIC Success Middle School College & Career Conference - March 30, 2022</h1>
 </div>
@@ -76,3 +81,13 @@
         <input type="submit" value="Register" class="btn btn-primary" />
     </div>
 </form>
+
+}else{
+    <div class="text-center">
+        <h1 class="display-4">Session Signup Form for EPIC Success Middle School College & Career Conference - March 30, 2022</h1>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Unregister" class="btn btn-primary" />
+    </div>
+}
+</html>
