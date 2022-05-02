@@ -17,10 +17,6 @@ public class SpeakerRepository : GenericRepository<Speaker>, ISpeakerRepository
     {
         
     }
-    // public IEnumerable<Speaker> GetSpeakerId(int? id)
-    // {
-    //     return _context.Speaker.Where(x => x.SpeakerId == id);
-    // }
 
     //Data retrieval methods below
     public async Task<Speaker> GetSpeakerId(int id)

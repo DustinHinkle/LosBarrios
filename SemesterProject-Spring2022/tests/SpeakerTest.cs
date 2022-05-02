@@ -205,29 +205,3 @@ public class SpeakerTest
 
 
 
-// }
-
-// public  class SpeakerHelperFixture : IDisposable
-// {
-//     public SpeakerHelperFixture()
-//     {
-//     }
-
-//     public SpeakerHelper Helper { get; set; } = new MySpeakerHelper();
-
-
-//     public void Dispose(){}
-// }
-// public class UnitTestSpeaker : IClassFixture<MySpeakerHelper>
-// {
-//     private readonly SpeakerHelperFixture fixture;
-//     private readonly ITestOutputHelper output;
-
-//     public UnitTestSpeaker(ITestOutputHelper output, SpeakerHelperFixture fixture)
-//     {
-//         this.output;
-//         this.fixture;
-//     }
-
-
-// }
