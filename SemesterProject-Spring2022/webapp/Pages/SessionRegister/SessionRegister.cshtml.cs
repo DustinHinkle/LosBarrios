@@ -117,10 +117,6 @@ public class SessionModel : PageModel
         }
         return RedirectToPage("/Index");
     }
-    public void OnPostUnregister()
-    {
-
-    }
     public Speaker SelectUserId()
     {
             
