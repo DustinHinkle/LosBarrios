@@ -111,7 +111,7 @@ public class InformationModel : PageModel
         a.CellPhone = _UnitOfWork.SpeakerHelper.ValidateCellPhone(speaker.CellPhone);
         a.JobTitle = _UnitOfWork.SpeakerHelper.ValidateJobTitle(speaker.JobTitle);
         a.Address = _UnitOfWork.SpeakerHelper.ValidateAddress(speaker.Address);
-        a.Email = userEmail;
+        a.Email = Verify;
         
         //saves the update in the database
         // _context.Speaker.UpdateRange(a);
