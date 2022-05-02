@@ -95,31 +95,31 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="speaker.FirstName" class="control-label">First Name. Required.</label>
-                <input asp-for="speaker.FirstName" class="form-control" type="text" pattern="[A-Za-z]" required />
+                <input asp-for="speaker.FirstName" class="form-control" type="text" pattern="[A-Za-z]*" required />
                 <span asp-validation-for="speaker.FirstName" class="text-danger"></span>
             </div>
             <!--LastName Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.LastName" class="control-label">Last Name. Required.</label>
-                <input asp-for="speaker.LastName" class="form-control" type="text" pattern="[A-Za-z]" required/>
+                <input asp-for="speaker.LastName" class="form-control" type="text" pattern="[A-Za-z]*" required/>
                 <span asp-validation-for="speaker.LastName" class="text-danger"></span>
             </div>
             <!--JobTitle Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.JobTitle" class="control-label">Job Title. Required.</label>
-                <input asp-for="speaker.JobTitle" class="form-control" type="text" pattern="[A-Za-z]" required/>
+                <input asp-for="speaker.JobTitle" class="form-control" type="text" pattern="[A-Za-z]*" required/>
                 <span asp-validation-for="speaker.JobTitle" class="text-danger"></span>
             </div>
             <!--Employer Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.Employer" class="control-label">Employer Name. Required.</label>
-                <input asp-for="speaker.Employer" class="form-control" type="text" pattern="[A-Za-z0-9,]" required/>
+                <input asp-for="speaker.Employer" class="form-control" type="text" pattern="[A-Za-z0-9,]*" required/>
                 <span asp-validation-for="speaker.Employer" class="text-danger"></span>
             </div>
             <!--Address Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.Address" class="control-label">Address. Required.</label>
-                <input asp-for="speaker.Address" class="form-control" type="text" required pattern="[A-Za-z0-9,]" />
+                <input asp-for="speaker.Address" class="form-control" type="text" pattern="[A-Za-z0-9,]*" required/>
                 <span asp-validation-for="speaker.Address" class="text-danger"></span>
             </div>
             <!--CellPhone Form Group-->
@@ -137,7 +137,7 @@
             <!--Demonstration Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.Demonstration" class="control-label">Demonstration. Required.</label>
-                <input asp-for="speaker.Demonstration" class="form-control" type="text" pattern="[A-Za-z0-9,.]" required/>
+                <input asp-for="speaker.Demonstration" class="form-control" type="text" pattern="[A-Za-z0-9,.]*" required/>
                 <span asp-validation-for="speaker.Demonstration" class="text-danger"></span>
             </div>
             <!--LunchCount Form Group-->
@@ -149,13 +149,13 @@
             <!--TopicTitle Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.TopicTitle" class="control-label">Topic Title. Required.</label>
-                <input asp-for="speaker.TopicTitle" class="form-control" type="text" pattern="[A-Za-z0-9,.]" required/>
+                <input asp-for="speaker.TopicTitle" class="form-control" type="text" pattern="[A-Za-z0-9,.]*" required/>
                 <span asp-validation-for="speaker.TopicTitle" class="text-danger"></span>
             </div>
             <!--TopicDes Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.TopicDes" class="control-label">Description. Required.</label>
-                <input asp-for="speaker.TopicDes" class="form-control" type="text" pattern="[A-Za-z0-9,.]" required/>
+                <input asp-for="speaker.TopicDes" class="form-control" type="text" pattern="[A-Za-z0-9,.]*" required/>
                 <span asp-validation-for="speaker.TopicDes" class="text-danger"></span>
             </div>
             <!--Submit Button-->
@@ -171,31 +171,31 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="speaker.FirstName" class="control-label">First Name. Required.</label>
-                <input asp-for="speaker.FirstName" class="form-control" type="text" pattern="[A-Za-z]" required />
+                <input asp-for="speaker.FirstName" class="form-control" type="text" pattern="[A-Za-z]*" required />
                 <span asp-validation-for="speaker.FirstName" class="text-danger"></span>
             </div>
             <!--LastName Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.LastName" class="control-label">Last Name. Required.</label>
-                <input asp-for="speaker.LastName" class="form-control" type="text" pattern="[A-Za-z]" required/>
+                <input asp-for="speaker.LastName" class="form-control" type="text" pattern="[A-Za-z]*" required/>
                 <span asp-validation-for="speaker.LastName" class="text-danger"></span>
             </div>
             <!--JobTitle Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.JobTitle" class="control-label">Job Title. Required.</label>
-                <input asp-for="speaker.JobTitle" class="form-control" type="text" pattern="[A-Za-z]" required/>
+                <input asp-for="speaker.JobTitle" class="form-control" type="text" pattern="[A-Za-z]*" required/>
                 <span asp-validation-for="speaker.JobTitle" class="text-danger"></span>
             </div>
             <!--Employer Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.Employer" class="control-label">Employer Name. Required.</label>
-                <input asp-for="speaker.Employer" class="form-control" type="text" pattern="[A-Za-z0-9,]" required/>
+                <input asp-for="speaker.Employer" class="form-control" type="text" pattern="[A-Za-z0-9,]*" required/>
                 <span asp-validation-for="speaker.Employer" class="text-danger"></span>
             </div>
             <!--Address Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.Address" class="control-label">Address. Required.</label>
-                <input asp-for="speaker.Address" class="form-control" type="text" pattern="[A-Za-z0-9,]" required />
+                <input asp-for="speaker.Address" class="form-control" type="text" pattern="[A-Za-z0-9,]*" required />
                 <span asp-validation-for="speaker.Address" class="text-danger"></span>
             </div>
             <!--CellPhone Form Group-->
@@ -213,7 +213,7 @@
             <!--Demonstration Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.Demonstration" class="control-label">Demonstration. Required.</label>
-                <input asp-for="speaker.Demonstration" class="form-control" type="text" pattern="[A-Za-z0-9,.]" required/>
+                <input asp-for="speaker.Demonstration" class="form-control" type="text" pattern="[A-Za-z0-9,.]*" required/>
                 <span asp-validation-for="speaker.Demonstration" class="text-danger"></span>
             </div>
             <!--LunchCount Form Group-->
@@ -225,13 +225,13 @@
             <!--TopicTitle Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.TopicTitle" class="control-label">Topic Title. Required.</label>
-                <input asp-for="speaker.TopicTitle" class="form-control" type="text" pattern="[A-Za-z0-9,.]" required/>
+                <input asp-for="speaker.TopicTitle" class="form-control" type="text" pattern="[A-Za-z0-9,.]*" required/>
                 <span asp-validation-for="speaker.TopicTitle" class="text-danger"></span>
             </div>
             <!--TopicDes Form Group-->
             <div class="form-group">
                 <label asp-for="speaker.TopicDes" class="control-label">Description. Required.</label>
-                <input asp-for="speaker.TopicDes" class="form-control" type="text" pattern="[A-Za-z0-9,.]" required/>
+                <input asp-for="speaker.TopicDes" class="form-control" type="text" pattern="[A-Za-z0-9,.]*" required/>
                 <span asp-validation-for="speaker.TopicDes" class="text-danger"></span>
             </div>
             <!--Submit Button-->
