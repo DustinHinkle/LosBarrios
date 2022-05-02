@@ -12,11 +12,6 @@ public class SpeakerSessionRepository : GenericRepository<SpeakerSession>, ISpea
     {
         
     }
-
-    // public IEnumerable<SpeakerSession> GetSpeakerSessions(int id)
-    // {
-    //     return _context.SpeakerSessions.Where(x => x.SpeakerSessionId == id);
-    // }
     
     //Data retrieval methods below
     public async Task<SpeakerSession> GetSessionId(int id)

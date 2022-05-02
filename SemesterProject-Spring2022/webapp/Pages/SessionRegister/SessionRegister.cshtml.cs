@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
+using Repository;
+using LosBarriosDomain;
 
 
 namespace webapp.Pages;
@@ -24,11 +26,14 @@ public class SessionModel : PageModel
 {
     private readonly ILogger<SessionModel> _logger;
     private readonly ApplicationDbContext _context;
+    private IUnitOfWork _UnitOfWork;
+
     private readonly UserManager<IdentityUser> _userManager;
-    public SessionModel(ILogger<SessionModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager)
+    public SessionModel(ILogger<SessionModel> logger,IUnitOfWork UnitOfWork, ApplicationDbContext context, UserManager<IdentityUser> UserManager)
     {
         _logger = logger;
         _context = context;
+        _UnitOfWork = UnitOfWork;
         _userManager = UserManager;
         
     }
@@ -38,10 +43,11 @@ public class SessionModel : PageModel
     public Speaker SessionSpeaker {get; set;}
     public string Verify;
 
-    public void OnGet()
+    public async Task OnGet()
     {
-        
-        
+        IdentityUser applicationUser =  await _userManager.GetUserAsync(User);
+        string userEmail = applicationUser?.Email; // will give the user's Email
+        var test = _context.Speaker.Where(s => s.Email == userEmail).FirstOrDefault();
     }
     
     
@@ -65,41 +71,49 @@ public class SessionModel : PageModel
         
         sessionForSpeaker = SelectSessionSpeakerId();// the Speaker's Session in the database
 
-        session.Podium = helper.ValidatePodium (session.Podium);
-        session.Outlet = helper.ValidateOutlet (session.Outlet);
-        session.CleanWall = helper.ValidateCleanWall (session.CleanWall);
-        session.WhiteBoard = helper.ValidateWhiteBoard (session.WhiteBoard);
-        session.DemoTable = helper.ValidateDemoTable (session.DemoTable);
-        session.SessionSpeaker = helper.ValidateSpeaker(SessionSpeaker);
-        session.SessionCategory = helper.ValidateSessionCategory(session.SessionCategory);
-        session.SessionOne = helper.ValidateSessionOne(session.SessionOne);
-        session.SessionTwo = helper.ValidateSessionTwo(session.SessionTwo);
+        session.Podium = _UnitOfWork.SessionHelper.ValidatePodium (session.Podium);
+        session.Outlet = _UnitOfWork.SessionHelper.ValidateOutlet (session.Outlet);
+        session.CleanWall = _UnitOfWork.SessionHelper.ValidateCleanWall (session.CleanWall);
+        session.WhiteBoard = _UnitOfWork.SessionHelper.ValidateWhiteBoard (session.WhiteBoard);
+        session.DemoTable = _UnitOfWork.SessionHelper.ValidateDemoTable (session.DemoTable);
+        session.SessionSpeaker = _UnitOfWork.SessionHelper.ValidateSpeaker(SessionSpeaker);
+        session.SessionCategory = _UnitOfWork.SessionHelper.ValidateSessionCategory(session.SessionCategory);
+        session.SessionOne = _UnitOfWork.SessionHelper.ValidateSessionOne(session.SessionOne);
+        session.SessionTwo = _UnitOfWork.SessionHelper.ValidateSessionTwo(session.SessionTwo);
         session.SignupDate = DateTime.Today;
         session.SpeakerFullName = ($"{SessionSpeaker.FirstName}" + $" {SessionSpeaker.LastName}");
+
+        // speaker.FirstName = _UnitOfWork.SpeakerHelper.ValidateFirstName(speaker.FirstName);
+
         
 
 
         if(sessionForSpeaker == null)
         {
-            _context.SpeakerSessions.Add(session);
-            await _context.SaveChangesAsync();
+            // _context.SpeakerSessions.Add(session);
+            // await _context.SaveChangesAsync();
+            await _UnitOfWork.SpeakerSession.Add(session);
+            _UnitOfWork.Complete();  
         }else
         {
-            sessionForSpeaker.Podium = helper.ValidatePodium (session.Podium);
-            sessionForSpeaker.Outlet = helper.ValidateOutlet (session.Outlet);
-            sessionForSpeaker.CleanWall = helper.ValidateCleanWall (session.CleanWall);
-            sessionForSpeaker.WhiteBoard = helper.ValidateWhiteBoard (session.WhiteBoard);
-            sessionForSpeaker.DemoTable = helper.ValidateDemoTable (session.DemoTable);
-            sessionForSpeaker.SessionSpeaker = helper.ValidateSpeaker(SessionSpeaker);
-            sessionForSpeaker.SessionCategory = helper.ValidateSessionCategory(session.SessionCategory);
-            sessionForSpeaker.SessionOne = helper.ValidateSessionOne(session.SessionOne);
-            sessionForSpeaker.SessionTwo = helper.ValidateSessionTwo(session.SessionTwo);
+            sessionForSpeaker.Podium = _UnitOfWork.SessionHelper.ValidatePodium (session.Podium);
+            sessionForSpeaker.Outlet = _UnitOfWork.SessionHelper.ValidateOutlet (session.Outlet);
+            sessionForSpeaker.CleanWall = _UnitOfWork.SessionHelper.ValidateCleanWall (session.CleanWall);
+            sessionForSpeaker.WhiteBoard = _UnitOfWork.SessionHelper.ValidateWhiteBoard (session.WhiteBoard);
+            sessionForSpeaker.DemoTable = _UnitOfWork.SessionHelper.ValidateDemoTable (session.DemoTable);
+            sessionForSpeaker.SessionSpeaker = _UnitOfWork.SessionHelper.ValidateSpeaker(SessionSpeaker);
+            sessionForSpeaker.SessionCategory = _UnitOfWork.SessionHelper.ValidateSessionCategory(session.SessionCategory);
+            sessionForSpeaker.SessionOne = _UnitOfWork.SessionHelper.ValidateSessionOne(session.SessionOne);
+            sessionForSpeaker.SessionTwo = _UnitOfWork.SessionHelper.ValidateSessionTwo(session.SessionTwo);
             sessionForSpeaker.SignupDate = DateTime.Today;
             sessionForSpeaker.SpeakerFullName = ($"{SessionSpeaker.FirstName}"+ $" {SessionSpeaker.LastName}");
 
 
-            _context.SpeakerSessions.UpdateRange(sessionForSpeaker);
-            await _context.SaveChangesAsync();
+            // _context.SpeakerSessions.UpdateRange(sessionForSpeaker);
+            _UnitOfWork.SpeakerSession.Update(sessionForSpeaker);
+            // await _context.SaveChangesAsync();
+            _UnitOfWork.Complete();  
+
         }
         return RedirectToPage("/Index");
     }

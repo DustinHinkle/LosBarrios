@@ -15,7 +15,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
-
+using Repository;
+using LosBarriosDomain;
 
 namespace webapp.Pages;
 [Authorize] //need to login to see form page
@@ -23,6 +24,8 @@ public class InformationModel : PageModel
 {
     private readonly ILogger<InformationModel> _logger;
     private readonly ApplicationDbContext _context;
+    private IUnitOfWork _UnitOfWork;
+
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
         
@@ -34,11 +37,12 @@ public class InformationModel : PageModel
     // speaker.FirstName = helper.ValidateJobTitle
     public string Verify;
 
-    public InformationModel(ILogger<InformationModel> logger, ApplicationDbContext context, UserManager<IdentityUser> UserManager, SignInManager<IdentityUser> SignInManager)
+    public InformationModel(ILogger<InformationModel> logger,IUnitOfWork UnitOfWork, ApplicationDbContext context, UserManager<IdentityUser> UserManager, SignInManager<IdentityUser> SignInManager)
     {
         _logger = logger;
         _context = context;
         _userManager = UserManager;
+        _UnitOfWork = UnitOfWork;
         _signInManager = SignInManager;
         
     }
@@ -71,21 +75,23 @@ public class InformationModel : PageModel
         IdentityUser applicationUser = await _userManager.GetUserAsync(User);
         string userEmail = applicationUser?.Email; // will give the user's Email
         Verify = userEmail; //makes userEmail accessable  
-        speaker.FirstName = helper.ValidateFirstName(speaker.FirstName);
-        speaker.LastName = helper.ValidateLastName(speaker.LastName);
-        speaker.Email = helper.ValidateEmailAddress(speaker.Email);
-        speaker.Employer = helper.ValidateEmployer(speaker.Employer);
-        speaker.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
-        speaker.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-        speaker.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
-        speaker.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
-        speaker.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
-        speaker.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
-        speaker.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
-        speaker.Address = helper.ValidateAddress(speaker.Address);
+        speaker.FirstName = _UnitOfWork.SpeakerHelper.ValidateFirstName(speaker.FirstName);
+        speaker.LastName = _UnitOfWork.SpeakerHelper.ValidateLastName(speaker.LastName);
+        speaker.Email = _UnitOfWork.SpeakerHelper.ValidateEmailAddress(speaker.Email);
+        speaker.Employer = _UnitOfWork.SpeakerHelper.ValidateEmployer(speaker.Employer);
+        speaker.Demonstration = _UnitOfWork.SpeakerHelper.ValidateDemonstration(speaker.Demonstration);
+        speaker.LunchCount = _UnitOfWork.SpeakerHelper.ValidateLunchCount(speaker.LunchCount);
+        speaker.TopicDes = _UnitOfWork.SpeakerHelper.ValidateTopicDes(speaker.TopicDes);
+        speaker.TopicTitle = _UnitOfWork.SpeakerHelper.ValidateTopicTitle(speaker.TopicTitle);
+        speaker.BusinessPhone = _UnitOfWork.SpeakerHelper.ValidateBusinessPhone(speaker.BusinessPhone);
+        speaker.CellPhone = _UnitOfWork.SpeakerHelper.ValidateCellPhone(speaker.CellPhone);
+        speaker.JobTitle = _UnitOfWork.SpeakerHelper.ValidateJobTitle(speaker.JobTitle);
+        speaker.Address = _UnitOfWork.SpeakerHelper.ValidateAddress(speaker.Address);
         speaker.Email = Verify;
-        _context.Speaker.Add(speaker);
-        await _context.SaveChangesAsync();
+        // _context.Speaker.Add(speaker);
+        // await _context.SaveChangesAsync();
+        await _UnitOfWork.Speaker.Add(speaker); 
+        _UnitOfWork.Complete();  
     }
     public async Task UpdateSpeakerAsync(){
         IdentityUser applicationUser = await _userManager.GetUserAsync(User);
@@ -93,23 +99,25 @@ public class InformationModel : PageModel
         Verify = userEmail; //makes userEmail accessable   
         a = SelectUserId(); //sets speaker a equal to the signed in user
         //Sends new information to vaidation
-        a.FirstName = helper.ValidateFirstName(speaker.FirstName);
-        a.LastName = helper.ValidateLastName(speaker.LastName);
-        a.Email = helper.ValidateEmailAddress(speaker.Email);
-        a.Employer = helper.ValidateEmployer(speaker.Employer);
-        a.Demonstration = helper.ValidateDemonstration(speaker.Demonstration);
-        a.LunchCount = helper.ValidateLunchCount(speaker.LunchCount);
-        a.TopicDes = helper.ValidateTopicDes(speaker.TopicDes);
-        a.TopicTitle = helper.ValidateTopicTitle(speaker.TopicTitle);
-        a.BusinessPhone = helper.ValidateBusinessPhone(speaker.BusinessPhone);
-        a.CellPhone = helper.ValidateCellPhone(speaker.CellPhone);
-        a.JobTitle = helper.ValidateJobTitle(speaker.JobTitle);
-        a.Address = helper.ValidateAddress(speaker.Address);
+        a.FirstName = _UnitOfWork.SpeakerHelper.ValidateFirstName(speaker.FirstName);
+        a.LastName = _UnitOfWork.SpeakerHelper.ValidateLastName(speaker.LastName);
+        a.Email = _UnitOfWork.SpeakerHelper.ValidateEmailAddress(speaker.Email);
+        a.Employer = _UnitOfWork.SpeakerHelper.ValidateEmployer(speaker.Employer);
+        a.Demonstration = _UnitOfWork.SpeakerHelper.ValidateDemonstration(speaker.Demonstration);
+        a.LunchCount = _UnitOfWork.SpeakerHelper.ValidateLunchCount(speaker.LunchCount);
+        a.TopicDes = _UnitOfWork.SpeakerHelper.ValidateTopicDes(speaker.TopicDes);
+        a.TopicTitle = _UnitOfWork.SpeakerHelper.ValidateTopicTitle(speaker.TopicTitle);
+        a.BusinessPhone = _UnitOfWork.SpeakerHelper.ValidateBusinessPhone(speaker.BusinessPhone);
+        a.CellPhone = _UnitOfWork.SpeakerHelper.ValidateCellPhone(speaker.CellPhone);
+        a.JobTitle = _UnitOfWork.SpeakerHelper.ValidateJobTitle(speaker.JobTitle);
+        a.Address = _UnitOfWork.SpeakerHelper.ValidateAddress(speaker.Address);
         a.Email = userEmail;
         
         //saves the update in the database
-        _context.Speaker.UpdateRange(a);
-        await _context.SaveChangesAsync();
+        // _context.Speaker.UpdateRange(a);
+        // await _context.SaveChangesAsync();
+        _UnitOfWork.Speaker.Update(a);
+        _UnitOfWork.Complete();  
         //resets verify
         Verify = null;
     }
