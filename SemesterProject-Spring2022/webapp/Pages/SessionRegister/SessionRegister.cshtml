@@ -8,7 +8,7 @@
 <html>
 
 
-@if(Model.getpage == true){
+@* @if(Model.getpage == true){ *@
     
 <div class="text-center">
     <h1 class="display-4">Session Signup Form for EPIC Success Middle School College & Career Conference - March 30, 2022</h1>
@@ -82,12 +82,14 @@
     </div>
 </form>
 
-}else{
+@* }else{
+    <form>
     <div class="text-center">
         <h1 class="display-4">Session Signup Form for EPIC Success Middle School College & Career Conference - March 30, 2022</h1>
     </div>
-    <div class="form-group">
-        <input type="submit" value="Unregister" class="btn btn-primary" />
+    <div method="post" asp-page-handler="Unregister">
+        <button>Unregister</button>>
     </div>
-}
+    </form>
+} *@
 </html>

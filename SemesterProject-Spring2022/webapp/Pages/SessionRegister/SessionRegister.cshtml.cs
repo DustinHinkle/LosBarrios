@@ -47,15 +47,15 @@ public class SessionModel : PageModel
 
     public async Task OnGet()
     {
-        IdentityUser applicationUser =  await _userManager.GetUserAsync(User);
-        string userEmail = applicationUser?.Email; // will give the user's Email
-        var DoesSpeakerExistInSession = _context.SpeakerSessions.Where(s => s.SpeakerEmail == userEmail).FirstOrDefault();
-        if(DoesSpeakerExistInSession == null){
-            getpage = true;
-        }else
-        {
-            getpage = false;
-        }
+        // IdentityUser applicationUser =  await _userManager.GetUserAsync(User);
+        // string userEmail = applicationUser?.Email; // will give the user's Email
+        // var DoesSpeakerExistInSession = _context.SpeakerSessions.Where(s => s.SpeakerEmail == userEmail).FirstOrDefault();
+        // if(DoesSpeakerExistInSession == null){
+        //     getpage = true;
+        // }else
+        // {
+        //     getpage = false;
+        // } //Unused because of having Add and update.
     }
     
     
@@ -125,6 +125,11 @@ public class SessionModel : PageModel
         }
         return RedirectToPage("/Index");
     }
+    // public async OnPostUnregister() // unused because we have add and update.
+    // {   
+    //     _UnitOfWork.SpeakerSession.Delete()
+    //     _UnitOfWork.Complete(); 
+    // }
     public Speaker SelectUserId()
     {
             
